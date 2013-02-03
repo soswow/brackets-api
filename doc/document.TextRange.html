@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>document.TextRange</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.css">
+    <![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.7.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">Brackets API</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="#dependencies">Dependencies</a></li>
+                    <li><a href="#variables">Variables</a></li>
+                    <li><a href="#functions">Functions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h1>document.TextRange</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <div class="left-section">
+                <ul class="nav nav-list">
+                    <li class="nav-header">
+                        <a href="#" id="toggle-other-modules"><i class="icon-folder-close"></i> Modules (93)</a>
+                    </li>
+                </ul>
+                <ul id="other-module" class="nav nav-list">
+                    <li><a href="brackets.html">brackets</a></li>
+                    <li><a href="command.CommandManager.html">command.CommandManager</a></li>
+                    <li><a href="command.Commands.html">command.Commands</a></li>
+                    <li><a href="command.KeyBindingManager.html">command.KeyBindingManager</a></li>
+                    <li><a href="command.Menus.html">command.Menus</a></li>
+                    <li><a href="debug.DebugCommandHandlers.html">debug.DebugCommandHandlers</a></li>
+                    <li><a href="document.ChangedDocumentTracker.html">document.ChangedDocumentTracker</a></li>
+                    <li><a href="document.DocumentCommandHandlers.html">document.DocumentCommandHandlers</a></li>
+                    <li><a href="document.DocumentManager.html">document.DocumentManager</a></li>
+                    <li><a href="document.TextRange.html">document.TextRange</a></li>
+                    <li><a href="editor.CodeHintList.html">editor.CodeHintList</a></li>
+                    <li><a href="editor.CodeHintManager.html">editor.CodeHintManager</a></li>
+                    <li><a href="editor.CSSInlineEditor.html">editor.CSSInlineEditor</a></li>
+                    <li><a href="editor.Editor.html">editor.Editor</a></li>
+                    <li><a href="editor.EditorCommandHandlers.html">editor.EditorCommandHandlers</a></li>
+                    <li><a href="editor.EditorManager.html">editor.EditorManager</a></li>
+                    <li><a href="editor.EditorUtils.html">editor.EditorUtils</a></li>
+                    <li><a href="editor.InlineTextEditor.html">editor.InlineTextEditor</a></li>
+                    <li><a href="editor.InlineWidget.html">editor.InlineWidget</a></li>
+                    <li><a href="editor.MultiRangeInlineEditor.html">editor.MultiRangeInlineEditor</a></li>
+                    <li><a href="file.FileUtils.html">file.FileUtils</a></li>
+                    <li><a href="file.NativeFileError.html">file.NativeFileError</a></li>
+                    <li><a href="file.NativeFileSystem.html">file.NativeFileSystem</a></li>
+                    <li><a href="help.HelpCommandHandlers.html">help.HelpCommandHandlers</a></li>
+                    <li><a href="language.CSSUtils.html">language.CSSUtils</a></li>
+                    <li><a href="language.HTMLUtils.html">language.HTMLUtils</a></li>
+                    <li><a href="language.JSLintUtils.html">language.JSLintUtils</a></li>
+                    <li><a href="language.JSUtils.html">language.JSUtils</a></li>
+                    <li><a href="LiveDevelopment.Agents.ConsoleAgent.html">LiveDevelopment.Agents.ConsoleAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.CSSAgent.html">LiveDevelopment.Agents.CSSAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMAgent.html">LiveDevelopment.Agents.DOMAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMHelpers.html">LiveDevelopment.Agents.DOMHelpers</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMNode.html">LiveDevelopment.Agents.DOMNode</a></li>
+                    <li><a href="LiveDevelopment.Agents.EditAgent.html">LiveDevelopment.Agents.EditAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.GotoAgent.html">LiveDevelopment.Agents.GotoAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.HighlightAgent.html">LiveDevelopment.Agents.HighlightAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.NetworkAgent.html">LiveDevelopment.Agents.NetworkAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteAgent.html">LiveDevelopment.Agents.RemoteAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteFunctions.html">LiveDevelopment.Agents.RemoteFunctions</a></li>
+                    <li><a href="LiveDevelopment.Agents.ScriptAgent.html">LiveDevelopment.Agents.ScriptAgent</a></li>
+                    <li><a href="LiveDevelopment.Documents.CSSDocument.html">LiveDevelopment.Documents.CSSDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.HTMLDocument.html">LiveDevelopment.Documents.HTMLDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.JSDocument.html">LiveDevelopment.Documents.JSDocument</a></li>
+                    <li><a href="LiveDevelopment.Inspector.Inspector.html">LiveDevelopment.Inspector.Inspector</a></li>
+                    <li><a href="LiveDevelopment.LiveDevelopment.html">LiveDevelopment.LiveDevelopment</a></li>
+                    <li><a href="LiveDevelopment.main.html">LiveDevelopment.main</a></li>
+                    <li><a href="preferences.PreferencesDialogs.html">preferences.PreferencesDialogs</a></li>
+                    <li><a href="preferences.PreferencesManager.html">preferences.PreferencesManager</a></li>
+                    <li><a href="preferences.PreferenceStorage.html">preferences.PreferenceStorage</a></li>
+                    <li><a href="project.FileIndexManager.html">project.FileIndexManager</a></li>
+                    <li><a href="project.FileSyncManager.html">project.FileSyncManager</a></li>
+                    <li><a href="project.FileViewController.html">project.FileViewController</a></li>
+                    <li><a href="project.ProjectManager.html">project.ProjectManager</a></li>
+                    <li><a href="project.SidebarView.html">project.SidebarView</a></li>
+                    <li><a href="project.WorkingSetSort.html">project.WorkingSetSort</a></li>
+                    <li><a href="project.WorkingSetView.html">project.WorkingSetView</a></li>
+                    <li><a href="search.FindInFiles.html">search.FindInFiles</a></li>
+                    <li><a href="search.FindReplace.html">search.FindReplace</a></li>
+                    <li><a href="search.QuickOpen.html">search.QuickOpen</a></li>
+                    <li><a href="strings.html">strings</a></li>
+                    <li><a href="test.html">test</a></li>
+                    <li><a href="test2.html">test2</a></li>
+                    <li><a href="test3.html">test3</a></li>
+                    <li><a href="utils.AppInit.html">utils.AppInit</a></li>
+                    <li><a href="utils.Async.html">utils.Async</a></li>
+                    <li><a href="utils.BuildInfoUtils.html">utils.BuildInfoUtils</a></li>
+                    <li><a href="utils.CollectionUtils.html">utils.CollectionUtils</a></li>
+                    <li><a href="utils.ExtensionLoader.html">utils.ExtensionLoader</a></li>
+                    <li><a href="utils.ExtensionUtils.html">utils.ExtensionUtils</a></li>
+                    <li><a href="utils.Global.html">utils.Global</a></li>
+                    <li><a href="utils.KeyEvent.html">utils.KeyEvent</a></li>
+                    <li><a href="utils.NativeApp.html">utils.NativeApp</a></li>
+                    <li><a href="utils.PerfUtils.html">utils.PerfUtils</a></li>
+                    <li><a href="utils.Resizer.html">utils.Resizer</a></li>
+                    <li><a href="utils.ShellAPI.html">utils.ShellAPI</a></li>
+                    <li><a href="utils.StringUtils.html">utils.StringUtils</a></li>
+                    <li><a href="utils.TokenUtils.html">utils.TokenUtils</a></li>
+                    <li><a href="utils.UpdateNotification.html">utils.UpdateNotification</a></li>
+                    <li><a href="utils.UrlParams.html">utils.UrlParams</a></li>
+                    <li><a href="utils.ViewUtils.html">utils.ViewUtils</a></li>
+                    <li><a href="view.ViewCommandHandlers.html">view.ViewCommandHandlers</a></li>
+                    <li><a href="widgets.bootstrap-alerts.html">widgets.bootstrap-alerts</a></li>
+                    <li><a href="widgets.bootstrap-buttons.html">widgets.bootstrap-buttons</a></li>
+                    <li><a href="widgets.bootstrap-dropdown.html">widgets.bootstrap-dropdown</a></li>
+                    <li><a href="widgets.bootstrap-modal.html">widgets.bootstrap-modal</a></li>
+                    <li><a href="widgets.bootstrap-popover.html">widgets.bootstrap-popover</a></li>
+                    <li><a href="widgets.bootstrap-scrollspy.html">widgets.bootstrap-scrollspy</a></li>
+                    <li><a href="widgets.bootstrap-tabs.html">widgets.bootstrap-tabs</a></li>
+                    <li><a href="widgets.bootstrap-twipsy.html">widgets.bootstrap-twipsy</a></li>
+                    <li><a href="widgets.Dialogs.html">widgets.Dialogs</a></li>
+                    <li><a href="widgets.ModalBar.html">widgets.ModalBar</a></li>
+                    <li><a href="widgets.PopUpManager.html">widgets.PopUpManager</a></li>
+                    <li><a href="widgets.StatusBar.html">widgets.StatusBar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span9">
+            <section>
+                <div id="description">
+                    
+                </div>
+            </section>
+
+            <section id="dependencies">
+                <h3>Dependencies</h3>
+                <ul class="nav nav-list">
+                </ul>
+            </section>
+
+            <section id="variables">
+                <h3>Variables <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+                <!--</ul>-->
+            </section>
+
+            <section id="functions">
+                <h3>Functions <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+            </section>
+
+
+            <section id="classes">
+                <h2>Classes</h2>
+                    <div class="member public">
+                        <span class="pull-right scope">
+                            Constructor
+                        </span>
+                        <h4>TextRange</h4>
+                        <!--<strong>Params:</strong>-->
+                        <dl>
+                            <dt>document</dt>
+                            <dd>(<em>!Document</em>) - </dd>
+                            <dt>startLine</dt>
+                            <dd>(<em>number</em>) - First line in range (0-based, inclusive)</dd>
+                            <dt>endLine</dt>
+                            <dd>(<em>number</em>) - Last line in range (0-based, inclusive)</dd>
+                        </dl>
+                        <p></p>
+
+<p>Stores a range of lines that is automatically maintained as the Document changes. The range<br />MAY drop out of sync with the Document in certain edge cases; startLine &amp; endLine will become<br />null when that happens.</p>
+
+<p>Important: you must dispose() a TextRange when you're done with it. Because TextRange addRef()s<br />the Document (in order to listen to it), you will leak Documents otherwise.</p>
+
+<p>TextRange dispatches two events:<br /> - change -- When the range changes (due to a Document change)<br /> - lostSync -- When the backing Document changes in such a way that the range can no longer<br />         accurately be maintained. Generally, occurs whenever an edit spans a range boundary.<br />         After this, startLine &amp; endLine will be unusable (set to null).<br />         Also occurs when the document is deleted, though startLine &amp; endLine won't be modified<br />These events only ever occur in response to Document changes, so if you are already listening<br />to the Document, you could ignore the TextRange events and just read its updated value in your<br />own Document change handler.</p>
+                        <button class="btn btn-small show-code">Show code</button>
+                        <pre class="code"><code>function TextRange(document, startLine, endLine) {
+        this.startLine = startLine;
+        this.endLine = endLine;
+        
+        this.document = document;
+        document.addRef();
+        &#x2F;&#x2F; store this-bound versions of listeners so we can remove them later
+        this._handleDocumentChange = this._handleDocumentChange.bind(this);
+        this._handleDocumentDeleted = this._handleDocumentDeleted.bind(this);
+        $(document).on(&quot;change&quot;, this._handleDocumentChange);
+        $(document).on(&quot;deleted&quot;, this._handleDocumentDeleted);
+    }</code></pre>
+                    </div>
+
+                    <section class="properties">
+                        <h3>Properties<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>document</h4>
+                            <dl>
+                            </dl>
+                            <p>@type {!Document}</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype.document = null;</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>endLine</h4>
+                            <dl>
+                            </dl>
+                            <p>@type {?number} Null after "lostSync" is dispatched</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype.endLine = null;</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>startLine</h4>
+                            <dl>
+                            </dl>
+                            <p>@type {?number} Null after "lostSync" is dispatched</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype.startLine = null;</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="methods">
+                        <h3>Methods<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_applyChangesToRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Updates the range based on the changeList from a Document "change" event. Dispatches a<br />"change" event if the range was adjusted at all. Dispatches a "lostSync" event instead if the<br />range can no longer be accurately maintained.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype._applyChangesToRange = function (changeList) {
+        var hasChanged = false;
+        var change;
+        for (change = changeList; change; change = change.next) {
+            &#x2F;&#x2F; Apply this step of the change list
+            var result = this._applySingleChangeToRange(change);
+            hasChanged = hasChanged || result;
+            
+            &#x2F;&#x2F; If we lost sync with the range, just bail now
+            if (this.startLine === null || this.endLine === null) {
+                $(this).triggerHandler(&quot;lostSync&quot;);
+                break;
+            }
+        }
+        
+        if (hasChanged) {
+            $(this).triggerHandler(&quot;change&quot;);
+        }
+    };
+    
+    TextRange.prototype._handleDocumentChange = function (event, doc, changeList) {
+        this._applyChangesToRange(changeList);
+    };
+    
+    TextRange.prototype._handleDocumentDeleted = function (event) {
+        $(this).triggerHandler(&quot;lostSync&quot;);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_applySingleChangeToRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Applies a single Document change object (out of the linked list of multiple such objects)<br />to this range. Returns true if the range was changed as a result.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype._applySingleChangeToRange = function (change) {
+        &#x2F;&#x2F; console.log(this + &quot; applying change to (&quot; +
+        &#x2F;&#x2F;         (change.from &amp;&amp; (change.from.line+&quot;,&quot;+change.from.ch)) + &quot; - &quot; +
+        &#x2F;&#x2F;         (change.to &amp;&amp; (change.to.line+&quot;,&quot;+change.to.ch)) + &quot;)&quot;);
+        
+        &#x2F;&#x2F; Special case: the range is no longer meaningful since the entire text was replaced
+        if (!change.from || !change.to) {
+            this.startLine = null;
+            this.endLine = null;
+            return true;
+            
+        &#x2F;&#x2F; Special case: certain changes around the edges of the range are problematic, because
+        &#x2F;&#x2F; if they&#39;re undone, we&#39;ll be unable to determine how to fix up the range to include the
+        &#x2F;&#x2F; undone content. (The &quot;undo&quot; will just look like an insertion outside our bounds.) So
+        &#x2F;&#x2F; in those cases, we destroy the range instead of fixing it up incorrectly. The specific
+        &#x2F;&#x2F; cases are:
+        &#x2F;&#x2F; 1. Edit crosses the start boundary of the inline editor (defined as character 0 
+        &#x2F;&#x2F;    of the first line).
+        &#x2F;&#x2F; 2. Edit crosses the end boundary of the inline editor (defined as the newline at
+        &#x2F;&#x2F;    the end of the last line).
+        &#x2F;&#x2F; Note: we also used to disallow edits that start at the beginning of the range (character 0
+        &#x2F;&#x2F;    of the first line) if they crossed a newline. This was a vestige from before case #1
+        &#x2F;&#x2F;    was added; now that edits crossing the top boundary (actually, undos of such edits) are
+        &#x2F;&#x2F;    out of the picture, edits on the first line of the range unambiguously belong inside it.
+        } else if ((change.from.line &lt; this.startLine &amp;&amp; change.to.line &gt;= this.startLine) ||
+                   (change.from.line &lt;= this.endLine &amp;&amp; change.to.line &gt; this.endLine)) {
+            this.startLine = null;
+            this.endLine = null;
+            return true;
+            
+        &#x2F;&#x2F; Normal case: update the range end points if any content was added before them. Note that
+        &#x2F;&#x2F; we don&#39;t rely on line handles for this since we want to gracefully handle cases where the
+        &#x2F;&#x2F; start or end line was deleted during a change.
+        } else {
+            var numAdded = change.text.length - (change.to.line - change.from.line + 1);
+            var hasChanged = false;
+            
+            &#x2F;&#x2F; This logic is so simple because we&#39;ve already excluded all cases where the change
+            &#x2F;&#x2F; crosses the range boundaries
+            if (change.to.line &lt; this.startLine) {
+                this.startLine += numAdded;
+                hasChanged = true;
+            }
+            if (change.to.line &lt;= this.endLine) {
+                this.endLine += numAdded;
+                hasChanged = true;
+            }
+            
+            &#x2F;&#x2F; console.log(&quot;Now &quot; + this);
+            
+            return hasChanged;
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>dispose</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Detaches from the Document. The TextRange will no longer update or send change events</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype.dispose = function (editor, change) {
+        &#x2F;&#x2F; Disconnect from Document
+        this.document.releaseRef();
+        $(this.document).off(&quot;change&quot;, this._handleDocumentChange);
+        $(this.document).off(&quot;deleted&quot;, this._handleDocumentDeleted);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>toString</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>(pretty toString(), to aid debugging)</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>TextRange.prototype.toString = function () {
+        return &quot;[TextRange &quot; + this.startLine + &quot;-&quot; + this.endLine + &quot; in &quot; + this.document + &quot;]&quot;;
+    };
+    
+    
+    &#x2F;&#x2F; Define public API
+    exports.TextRange = TextRange;
+});</code></pre>
+                        </div>
+                    </section>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

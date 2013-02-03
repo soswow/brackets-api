@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>editor.MultiRangeInlineEditor</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.css">
+    <![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.7.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">Brackets API</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="#dependencies">Dependencies</a></li>
+                    <li><a href="#variables">Variables</a></li>
+                    <li><a href="#functions">Functions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h1>editor.MultiRangeInlineEditor</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <div class="left-section">
+                <ul class="nav nav-list">
+                    <li class="nav-header">
+                        <a href="#" id="toggle-other-modules"><i class="icon-folder-close"></i> Modules (93)</a>
+                    </li>
+                </ul>
+                <ul id="other-module" class="nav nav-list">
+                    <li><a href="brackets.html">brackets</a></li>
+                    <li><a href="command.CommandManager.html">command.CommandManager</a></li>
+                    <li><a href="command.Commands.html">command.Commands</a></li>
+                    <li><a href="command.KeyBindingManager.html">command.KeyBindingManager</a></li>
+                    <li><a href="command.Menus.html">command.Menus</a></li>
+                    <li><a href="debug.DebugCommandHandlers.html">debug.DebugCommandHandlers</a></li>
+                    <li><a href="document.ChangedDocumentTracker.html">document.ChangedDocumentTracker</a></li>
+                    <li><a href="document.DocumentCommandHandlers.html">document.DocumentCommandHandlers</a></li>
+                    <li><a href="document.DocumentManager.html">document.DocumentManager</a></li>
+                    <li><a href="document.TextRange.html">document.TextRange</a></li>
+                    <li><a href="editor.CodeHintList.html">editor.CodeHintList</a></li>
+                    <li><a href="editor.CodeHintManager.html">editor.CodeHintManager</a></li>
+                    <li><a href="editor.CSSInlineEditor.html">editor.CSSInlineEditor</a></li>
+                    <li><a href="editor.Editor.html">editor.Editor</a></li>
+                    <li><a href="editor.EditorCommandHandlers.html">editor.EditorCommandHandlers</a></li>
+                    <li><a href="editor.EditorManager.html">editor.EditorManager</a></li>
+                    <li><a href="editor.EditorUtils.html">editor.EditorUtils</a></li>
+                    <li><a href="editor.InlineTextEditor.html">editor.InlineTextEditor</a></li>
+                    <li><a href="editor.InlineWidget.html">editor.InlineWidget</a></li>
+                    <li><a href="editor.MultiRangeInlineEditor.html">editor.MultiRangeInlineEditor</a></li>
+                    <li><a href="file.FileUtils.html">file.FileUtils</a></li>
+                    <li><a href="file.NativeFileError.html">file.NativeFileError</a></li>
+                    <li><a href="file.NativeFileSystem.html">file.NativeFileSystem</a></li>
+                    <li><a href="help.HelpCommandHandlers.html">help.HelpCommandHandlers</a></li>
+                    <li><a href="language.CSSUtils.html">language.CSSUtils</a></li>
+                    <li><a href="language.HTMLUtils.html">language.HTMLUtils</a></li>
+                    <li><a href="language.JSLintUtils.html">language.JSLintUtils</a></li>
+                    <li><a href="language.JSUtils.html">language.JSUtils</a></li>
+                    <li><a href="LiveDevelopment.Agents.ConsoleAgent.html">LiveDevelopment.Agents.ConsoleAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.CSSAgent.html">LiveDevelopment.Agents.CSSAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMAgent.html">LiveDevelopment.Agents.DOMAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMHelpers.html">LiveDevelopment.Agents.DOMHelpers</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMNode.html">LiveDevelopment.Agents.DOMNode</a></li>
+                    <li><a href="LiveDevelopment.Agents.EditAgent.html">LiveDevelopment.Agents.EditAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.GotoAgent.html">LiveDevelopment.Agents.GotoAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.HighlightAgent.html">LiveDevelopment.Agents.HighlightAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.NetworkAgent.html">LiveDevelopment.Agents.NetworkAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteAgent.html">LiveDevelopment.Agents.RemoteAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteFunctions.html">LiveDevelopment.Agents.RemoteFunctions</a></li>
+                    <li><a href="LiveDevelopment.Agents.ScriptAgent.html">LiveDevelopment.Agents.ScriptAgent</a></li>
+                    <li><a href="LiveDevelopment.Documents.CSSDocument.html">LiveDevelopment.Documents.CSSDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.HTMLDocument.html">LiveDevelopment.Documents.HTMLDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.JSDocument.html">LiveDevelopment.Documents.JSDocument</a></li>
+                    <li><a href="LiveDevelopment.Inspector.Inspector.html">LiveDevelopment.Inspector.Inspector</a></li>
+                    <li><a href="LiveDevelopment.LiveDevelopment.html">LiveDevelopment.LiveDevelopment</a></li>
+                    <li><a href="LiveDevelopment.main.html">LiveDevelopment.main</a></li>
+                    <li><a href="preferences.PreferencesDialogs.html">preferences.PreferencesDialogs</a></li>
+                    <li><a href="preferences.PreferencesManager.html">preferences.PreferencesManager</a></li>
+                    <li><a href="preferences.PreferenceStorage.html">preferences.PreferenceStorage</a></li>
+                    <li><a href="project.FileIndexManager.html">project.FileIndexManager</a></li>
+                    <li><a href="project.FileSyncManager.html">project.FileSyncManager</a></li>
+                    <li><a href="project.FileViewController.html">project.FileViewController</a></li>
+                    <li><a href="project.ProjectManager.html">project.ProjectManager</a></li>
+                    <li><a href="project.SidebarView.html">project.SidebarView</a></li>
+                    <li><a href="project.WorkingSetSort.html">project.WorkingSetSort</a></li>
+                    <li><a href="project.WorkingSetView.html">project.WorkingSetView</a></li>
+                    <li><a href="search.FindInFiles.html">search.FindInFiles</a></li>
+                    <li><a href="search.FindReplace.html">search.FindReplace</a></li>
+                    <li><a href="search.QuickOpen.html">search.QuickOpen</a></li>
+                    <li><a href="strings.html">strings</a></li>
+                    <li><a href="test.html">test</a></li>
+                    <li><a href="test2.html">test2</a></li>
+                    <li><a href="test3.html">test3</a></li>
+                    <li><a href="utils.AppInit.html">utils.AppInit</a></li>
+                    <li><a href="utils.Async.html">utils.Async</a></li>
+                    <li><a href="utils.BuildInfoUtils.html">utils.BuildInfoUtils</a></li>
+                    <li><a href="utils.CollectionUtils.html">utils.CollectionUtils</a></li>
+                    <li><a href="utils.ExtensionLoader.html">utils.ExtensionLoader</a></li>
+                    <li><a href="utils.ExtensionUtils.html">utils.ExtensionUtils</a></li>
+                    <li><a href="utils.Global.html">utils.Global</a></li>
+                    <li><a href="utils.KeyEvent.html">utils.KeyEvent</a></li>
+                    <li><a href="utils.NativeApp.html">utils.NativeApp</a></li>
+                    <li><a href="utils.PerfUtils.html">utils.PerfUtils</a></li>
+                    <li><a href="utils.Resizer.html">utils.Resizer</a></li>
+                    <li><a href="utils.ShellAPI.html">utils.ShellAPI</a></li>
+                    <li><a href="utils.StringUtils.html">utils.StringUtils</a></li>
+                    <li><a href="utils.TokenUtils.html">utils.TokenUtils</a></li>
+                    <li><a href="utils.UpdateNotification.html">utils.UpdateNotification</a></li>
+                    <li><a href="utils.UrlParams.html">utils.UrlParams</a></li>
+                    <li><a href="utils.ViewUtils.html">utils.ViewUtils</a></li>
+                    <li><a href="view.ViewCommandHandlers.html">view.ViewCommandHandlers</a></li>
+                    <li><a href="widgets.bootstrap-alerts.html">widgets.bootstrap-alerts</a></li>
+                    <li><a href="widgets.bootstrap-buttons.html">widgets.bootstrap-buttons</a></li>
+                    <li><a href="widgets.bootstrap-dropdown.html">widgets.bootstrap-dropdown</a></li>
+                    <li><a href="widgets.bootstrap-modal.html">widgets.bootstrap-modal</a></li>
+                    <li><a href="widgets.bootstrap-popover.html">widgets.bootstrap-popover</a></li>
+                    <li><a href="widgets.bootstrap-scrollspy.html">widgets.bootstrap-scrollspy</a></li>
+                    <li><a href="widgets.bootstrap-tabs.html">widgets.bootstrap-tabs</a></li>
+                    <li><a href="widgets.bootstrap-twipsy.html">widgets.bootstrap-twipsy</a></li>
+                    <li><a href="widgets.Dialogs.html">widgets.Dialogs</a></li>
+                    <li><a href="widgets.ModalBar.html">widgets.ModalBar</a></li>
+                    <li><a href="widgets.PopUpManager.html">widgets.PopUpManager</a></li>
+                    <li><a href="widgets.StatusBar.html">widgets.StatusBar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span9">
+            <section>
+                <div id="description">
+                    <p>An inline editor for displaying and editing multiple text ranges. Each range corresponds to a <br />contiguous set of lines in a file. </p>
+
+<p>In the current implementation, only one range is visible at a time. A list on the right side<br />of the editor allows the user to select which range is visible. </p>
+
+<p>This module does not dispatch any events.</p>
+                </div>
+            </section>
+
+            <section id="dependencies">
+                <h3>Dependencies</h3>
+                <ul class="nav nav-list">
+                    <li><a href="command.CommandManager.html">command.CommandManager</a></li>
+                    <li><a href="command.Commands.html">command.Commands</a></li>
+                    <li><a href="document.TextRange.html">document.TextRange</a></li>
+                    <li><a href="editor.EditorManager.html">editor.EditorManager</a></li>
+                    <li><a href="editor.InlineTextEditor.html">editor.InlineTextEditor</a></li>
+                    <li><a href="strings.html">strings</a></li>
+                    <li><a href="utils.PerfUtils.html">utils.PerfUtils</a></li>
+                </ul>
+            </section>
+
+            <section id="variables">
+                <h3>Variables <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+                <!--</ul>-->
+            </section>
+
+            <section id="functions">
+                <h3>Functions <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_getFocusedMultiRangeInlineEditor</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                    </dl>
+                    <p>Returns the currently focused MultiRangeInlineEditor.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _getFocusedMultiRangeInlineEditor() {
+        var focusedWidget = EditorManager.getFocusedInlineWidget();
+        if (focusedWidget instanceof MultiRangeInlineEditor) {
+            return focusedWidget;
+        } else {
+            return null;
+        }
+    }</code></pre>
+                </div>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_nextRange</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                    </dl>
+                    <p>Next Range command handler</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _nextRange() {
+        var focusedMultiRangeInlineEditor = _getFocusedMultiRangeInlineEditor();
+        if (focusedMultiRangeInlineEditor) {
+            focusedMultiRangeInlineEditor._selectNextRange();
+        }
+    }
+    
+    CommandManager.register(Strings.CMD_QUICK_EDIT_PREV_MATCH,      Commands.QUICK_EDIT_PREV_MATCH, _previousRange);
+    CommandManager.register(Strings.CMD_QUICK_EDIT_NEXT_MATCH,      Commands.QUICK_EDIT_NEXT_MATCH, _nextRange);
+
+    exports.MultiRangeInlineEditor = MultiRangeInlineEditor;
+});</code></pre>
+                </div>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_parseStyleSize</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                            <dt>$target</dt>
+                            <dd>(<em>!JQuery</em>) - Element in DOM</dd>
+                            <dt>styleName</dt>
+                            <dd>(<em>!string</em>) - Style name to query</dd>
+                            <dt>Returns</dt>
+                            <dd>(<em>number</em>) - Style value converted from string to number, removing "px" units</dd>
+                    </dl>
+                    <p>Remove trailing "px" from a style size value.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _parseStyleSize($target, styleName) {
+        return parseInt($target.css(styleName), 10);
+    }</code></pre>
+                </div>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_previousRange</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                    </dl>
+                    <p>Previous Range command handler</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _previousRange() {
+        var focusedMultiRangeInlineEditor = _getFocusedMultiRangeInlineEditor();
+        if (focusedMultiRangeInlineEditor) {
+            focusedMultiRangeInlineEditor._selectPreviousRange();
+        }
+    }</code></pre>
+                </div>
+            </section>
+
+
+            <section id="classes">
+                <h2>Classes</h2>
+                    <div class="member public">
+                        <span class="pull-right scope">
+                            Constructor
+                        </span>
+                        <h4>SearchResultItem</h4>
+                        <!--<strong>Params:</strong>-->
+                        <dl>
+                        </dl>
+                        <p>Stores one search result: its source file, line range, etc. plus the DOM node representing it<br />in the results list.</p>
+                        <button class="btn btn-small show-code">Show code</button>
+                        <pre class="code"><code>function SearchResultItem(rangeResult) {
+        this.name = rangeResult.name;
+        this.textRange = new TextRange(rangeResult.document, rangeResult.lineStart, rangeResult.lineEnd);
+        &#x2F;&#x2F; this.$listItem is assigned in load()
+    }
+    SearchResultItem.prototype.name = null;
+    SearchResultItem.prototype.textRange = null;
+    SearchResultItem.prototype.$listItem = null;
+    
+    function _updateRangeLabel(listItem, range) {
+        var text = range.name + &quot; &quot; + range.textRange.document.file.name + &quot; : &quot; + (range.textRange.startLine + 1);
+        listItem.text(text);
+        listItem.attr(&quot;title&quot;, text);
+    }</code></pre>
+                    </div>
+
+                    <section class="properties">
+                        <h3>Properties<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                    </section>
+
+                    <section class="methods">
+                        <h3>Methods<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                    </section>
+                    <div class="member public">
+                        <span class="pull-right scope">
+                            Constructor
+                        </span>
+                        <h4>MultiRangeInlineEditor</h4>
+                        <!--<strong>Params:</strong>-->
+                        <dl>
+                            <dt>ranges</dt>
+                            <dd>(<em>Array.&lt;name:String, document:Document, lineStart:number, lineEnd:number&gt;</em>) - The text ranges to display.</dd>
+                        </dl>
+                        <p></p>
+                        <button class="btn btn-small show-code">Show code</button>
+                        <pre class="code"><code>function MultiRangeInlineEditor(ranges) {
+        InlineTextEditor.call(this);
+        
+        &#x2F;&#x2F; Store the results to show in the range list. This creates TextRanges bound to the Document,
+        &#x2F;&#x2F; which will stay up to date automatically (but we must be sure to detach them later)
+        this._ranges = ranges.map(function (rangeResult) {
+            return new SearchResultItem(rangeResult);
+        });
+        
+        this._selectedRangeIndex = -1;
+    }
+    MultiRangeInlineEditor.prototype = Object.create(InlineTextEditor.prototype);
+    MultiRangeInlineEditor.prototype.constructor = MultiRangeInlineEditor;
+    MultiRangeInlineEditor.prototype.parentClass = InlineTextEditor.prototype;
+    
+    MultiRangeInlineEditor.prototype.$editorsDiv = null;
+    MultiRangeInlineEditor.prototype.$relatedContainer = null;
+    MultiRangeInlineEditor.prototype.$selectedMarker = null;</code></pre>
+                    </div>
+
+                    <section class="properties">
+                        <h3>Properties<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_ranges</h4>
+                            <dl>
+                                <dt>Private</dt>
+                            </dl>
+                            <p>@type {Array.<SearchResultItem>}</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._ranges = null;
+    MultiRangeInlineEditor.prototype._selectedRangeIndex = null;</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="methods">
+                        <h3>Methods<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_ensureCursorVisible</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Based on the position of the cursor in the inline editor, determine whether we need to change the<br />scroll position of the host editor to ensure that the cursor is visible.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._ensureCursorVisible = function () {
+        if ($.contains(this.editors[0].getRootElement(), window.document.activeElement)) {
+            var cursorCoords = this.editors[0]._codeMirror.cursorCoords(),
+                lineSpaceOffset = $(this.editors[0]._getLineSpaceElement()).offset(),
+                rangeListOffset = this.$relatedContainer.offset();
+            &#x2F;&#x2F; If we&#39;re off the left-hand side, we just want to scroll it into view normally. But
+            &#x2F;&#x2F; if we&#39;re underneath the range list on the right, we want to ask the host editor to 
+            &#x2F;&#x2F; scroll far enough that the current cursor position is visible to the left of the range 
+            &#x2F;&#x2F; list. (Because we always add extra padding for the range list, this is always possible.)
+            if (cursorCoords.x &gt;= rangeListOffset.left) {
+                cursorCoords.x += this.$relatedContainer.outerWidth();
+            }
+            
+            &#x2F;&#x2F; Vertically, we want to set the scroll position relative to the overall host editor, not
+            &#x2F;&#x2F; the lineSpace of the widget itself. Also, we can&#39;t use the lineSpace here, because its top
+            &#x2F;&#x2F; position just corresponds to whatever CodeMirror happens to have rendered at the top. So
+            &#x2F;&#x2F; we need to figure out our position relative to the top of the virtual scroll area, which is
+            &#x2F;&#x2F; the top of the actual scroller minus the scroll position.
+            var scrollerTop = $(this.hostEditor.getScrollerElement()).offset().top - this.hostEditor.getScrollPos().y;
+            this.hostEditor._codeMirror.scrollIntoView(cursorCoords.x - lineSpaceOffset.left,
+                                                       cursorCoords.y - scrollerTop,
+                                                       cursorCoords.x - lineSpaceOffset.left,
+                                                       cursorCoords.yBot - scrollerTop);
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_getRanges</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>@return {Array.<SearchResultItem>}</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._getRanges = function () {
+        return this._ranges;
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_getSelectedRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>@return {!SearchResultItem}</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._getSelectedRange = function () {
+        return this._ranges[this._selectedRangeIndex];
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_handleChange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Handle a change event from the editor. Update the related container and make sure the<br />cursor is visible.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._handleChange = function () {
+        this._updateRelatedContainer();
+        this._ensureCursorVisible();
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_onClick</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Prevent clicks in the dead areas of the inlineWidget from changing the focus and insertion point in the editor.<br />This is done by detecting clicks in the inlineWidget that are not inside the editor or the range list and<br />restoring focus and the insertion point.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._onClick = function (event) {
+        var childEditor = this.editors[0],
+            editorRoot = childEditor.getRootElement(),
+            editorPos = $(editorRoot).offset();
+        
+        function containsClick($parent) {
+            return $parent.find(event.target) &gt; 0 || $parent[0] === event.target;
+        }
+        
+        &#x2F;&#x2F; Ignore clicks in editor and clicks on filename link
+        if (!containsClick($(editorRoot)) &amp;&amp; !containsClick($(&quot;.filename&quot;, this.$editorsDiv))) {
+            childEditor.focus();
+            &#x2F;&#x2F; Only set the cursor if the click isn&#39;t in the range list.
+            if (!containsClick(this.$relatedContainer)) {
+                if (event.pageY &lt; editorPos.top) {
+                    childEditor.setCursorPos(0, 0);
+                } else if (event.pageY &gt; editorPos.top + $(editorRoot).height()) {
+                    var lastLine = childEditor.getLastVisibleLine();
+                    childEditor.setCursorPos(lastLine, childEditor.document.getLine(lastLine).length);
+                }
+            }
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_onLostContent</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Overwrite InlineTextEditor's _onLostContent to do nothing if the document's file is deleted<br />(deletes are handled via TextRange's lostSync).</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._onLostContent = function (event, cause) {
+        &#x2F;&#x2F; Ignore when the editor&#39;s content got lost due to a deleted file
+        if (cause &amp;&amp; cause.type === &quot;deleted&quot;) { return; }
+        &#x2F;&#x2F; Else yield to the parent&#39;s implementation
+        return MultiRangeInlineEditor.prototype.parentClass._onLostContent.apply(this, arguments);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_relatedContainerInsertedHandler</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Set _relatedContainerInserted flag once the $relatedContainer is inserted in the DOM.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._relatedContainerInsertedHandler = function () {
+        this.$relatedContainer.off(&quot;DOMNodeInserted&quot;, this._relatedContainerInsertedHandler);
+        this._relatedContainerInserted = true;
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_selectNextRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Display the next range in the range list</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._selectNextRange = function () {
+        this.setSelectedIndex(this._selectedRangeIndex + 1);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_selectPreviousRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Display the previous range in the range list</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._selectPreviousRange = function () {
+        this.setSelectedIndex(this._selectedRangeIndex - 1);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_updateRelatedContainer</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Set the size, position, and clip rect of the range list.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype._updateRelatedContainer = function () {
+        var borderThickness = (this.$htmlContent.outerHeight() - this.$htmlContent.innerHeight()) &#x2F; 2;
+        this.$relatedContainer.css(&quot;top&quot;, this.$htmlContent.offset().top + borderThickness);
+        this.$relatedContainer.height(this.$htmlContent.height());
+        
+        &#x2F;&#x2F; Because we&#39;re using position: fixed, we need to explicitly clip the range list if it crosses
+        &#x2F;&#x2F; out of the top or bottom of the scroller area.
+        var hostScroller = this.hostEditor.getScrollerElement(),
+            rcTop = this.$relatedContainer.offset().top,
+            rcHeight = this.$relatedContainer.outerHeight(),
+            rcBottom = rcTop + rcHeight,
+            scrollerOffset = $(hostScroller).offset(),
+            scrollerTop = scrollerOffset.top,
+            scrollerBottom = scrollerTop + hostScroller.clientHeight,
+            scrollerLeft = scrollerOffset.left,
+            rightOffset = $(window.document.body).outerWidth() - (scrollerLeft + hostScroller.clientWidth);
+        if (rcTop &lt; scrollerTop || rcBottom &gt; scrollerBottom) {
+            this.$relatedContainer.css(&quot;clip&quot;, &quot;rect(&quot; + Math.max(scrollerTop - rcTop, 0) + &quot;px, auto, &quot; +
+                                       (rcHeight - Math.max(rcBottom - scrollerBottom, 0)) + &quot;px, auto)&quot;);
+        } else {
+            this.$relatedContainer.css(&quot;clip&quot;, &quot;&quot;);
+        }
+        
+        &#x2F;&#x2F; Constrain relatedContainer width to half of the scroller width
+        var relatedContainerWidth = this.$relatedContainer.width();
+        if (this._relatedContainerInserted) {
+            if (this._relatedContainerDefaultWidth === undefined) {
+                this._relatedContainerDefaultWidth = relatedContainerWidth;
+            }
+            
+            var halfWidth = Math.floor(hostScroller.clientWidth &#x2F; 2);
+            relatedContainerWidth = Math.min(this._relatedContainerDefaultWidth, halfWidth);
+            this.$relatedContainer.width(relatedContainerWidth);
+        }
+        
+        &#x2F;&#x2F; Position immediately to the left of the main editor&#39;s scrollbar.
+        this.$relatedContainer.css(&quot;right&quot;, rightOffset + &quot;px&quot;);
+
+        &#x2F;&#x2F; Add extra padding to the right edge of the widget to account for the range list.
+        this.$htmlContent.css(&quot;padding-right&quot;, this.$relatedContainer.outerWidth() + &quot;px&quot;);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>load</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>hostEditor</dt>
+                                <dd>(<em>!Editor</em>) - Outer Editor instance that inline editor will sit within.</dd>
+                            </dl>
+                            <p>@override</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype.load = function (hostEditor) {
+        MultiRangeInlineEditor.prototype.parentClass.load.apply(this, arguments);
+        
+        &#x2F;&#x2F; Container to hold all editors
+        var self = this;
+
+        &#x2F;&#x2F; Bind event handlers
+        this._updateRelatedContainer = this._updateRelatedContainer.bind(this);
+        this._ensureCursorVisible = this._ensureCursorVisible.bind(this);
+        this._handleChange = this._handleChange.bind(this);
+        this._onClick = this._onClick.bind(this);
+
+        &#x2F;&#x2F; Create DOM to hold editors and related list
+        this.$editorsDiv = $(window.document.createElement(&quot;div&quot;)).addClass(&quot;inlineEditorHolder&quot;);
+        
+        &#x2F;&#x2F; Outer container for border-left and scrolling
+        this.$relatedContainer = $(window.document.createElement(&quot;div&quot;)).addClass(&quot;related-container&quot;);
+        this._relatedContainerInserted = false;
+        this._relatedContainerInsertedHandler = this._relatedContainerInsertedHandler.bind(this);
+        
+        &#x2F;&#x2F; FIXME (jasonsj): deprecated event http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;DOM-Level-3-Events&#x2F;
+        this.$relatedContainer.on(&quot;DOMNodeInserted&quot;, this._relatedContainerInsertedHandler);
+        
+        &#x2F;&#x2F; List &quot;selection&quot; highlight
+        this.$selectedMarker = $(window.document.createElement(&quot;div&quot;)).appendTo(this.$relatedContainer).addClass(&quot;selection&quot;);
+        
+        &#x2F;&#x2F; Inner container
+        var $related = $(window.document.createElement(&quot;div&quot;)).appendTo(this.$relatedContainer).addClass(&quot;related&quot;);
+        
+        &#x2F;&#x2F; Range list
+        var $rangeList = $(window.document.createElement(&quot;ul&quot;)).appendTo($related);
+        
+        &#x2F;&#x2F; create range list &amp; add listeners for range textrange changes
+        var rangeItemText;
+        this._ranges.forEach(function (range) {
+            &#x2F;&#x2F; Create list item UI
+            var $rangeItem = $(window.document.createElement(&quot;li&quot;)).appendTo($rangeList);
+            _updateRangeLabel($rangeItem, range);
+            $rangeItem.mousedown(function () {
+                self.setSelectedIndex(self._ranges.indexOf(range));
+            });
+
+            range.$listItem = $rangeItem;
+            
+            &#x2F;&#x2F; Update list item as TextRange changes
+            $(range.textRange).on(&quot;change&quot;, function () {
+                _updateRangeLabel($rangeItem, range);
+            });
+            
+            &#x2F;&#x2F; If TextRange lost sync, remove it from the list (and close the widget if no other ranges are left)
+            $(range.textRange).on(&quot;lostSync&quot;, function () {
+                self._removeRange(range);
+            });
+        });
+        
+        &#x2F;&#x2F; select the first range
+        self.setSelectedIndex(0);
+        
+        &#x2F;&#x2F; attach to main container
+        this.$htmlContent.append(this.$editorsDiv).append(this.$relatedContainer);
+        
+        &#x2F;&#x2F; initialize position based on the main #editor-holder
+        window.setTimeout(this._updateRelatedContainer, 0);
+        
+        &#x2F;&#x2F; Changes to the host editor should update the relatedContainer
+        &#x2F;&#x2F; Note: normally it&#39;s not kosher to listen to changes on a specific editor,
+        &#x2F;&#x2F; but in this case we&#39;re specifically concerned with changes in the given
+        &#x2F;&#x2F; editor, not general document changes.
+        $(this.hostEditor).on(&quot;change&quot;, this._updateRelatedContainer);
+        
+        &#x2F;&#x2F; Update relatedContainer when this widget&#39;s position changes
+        $(this).on(&quot;offsetTopChanged&quot;, this._updateRelatedContainer);
+        
+        &#x2F;&#x2F; Listen to the window resize event to reposition the relatedContainer
+        &#x2F;&#x2F; when the hostEditor&#39;s scrollbars visibility changes
+        $(window).on(&quot;resize&quot;, this._updateRelatedContainer);
+        
+        &#x2F;&#x2F; Listen for clicks directly on us, so we can set focus back to the editor
+        this.$htmlContent.on(&quot;click&quot;, this._onClick);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>onClosed</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Called any time inline is closed, whether manually (via closeThisInline()) or automatically</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype.onClosed = function () {
+        &#x2F;&#x2F; Superclass onClosed() destroys editor
+        MultiRangeInlineEditor.prototype.parentClass.onClosed.apply(this, arguments);
+        
+        &#x2F;&#x2F; remove resize handlers for relatedContainer
+        $(this.hostEditor).off(&quot;change&quot;, this._updateRelatedContainer);
+        $(this.editors[0]).off(&quot;change&quot;, this._handleChange);
+        $(this.editors[0]).off(&quot;cursorActivity&quot;, this._ensureCursorVisible);
+        $(this).off(&quot;offsetTopChanged&quot;, this._updateRelatedContainer);
+        $(window).off(&quot;resize&quot;, this._updateRelatedContainer);
+        
+        &#x2F;&#x2F; de-ref all the Documents in the search results
+        this._ranges.forEach(function (searchResult) {
+            searchResult.textRange.dispose();
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>refresh</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Refreshes the height of the inline editor and all child editors.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype.refresh = function () {
+        MultiRangeInlineEditor.prototype.parentClass.refresh.apply(this, arguments);
+        this.sizeInlineWidgetToContents(true);
+        this._updateRelatedContainer();
+        this.editors.forEach(function (editor, j, arr) {
+            editor.refresh();
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setSelectedIndex</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>index</dt>
+                                <dd>(<em>!number</em>) - The index of the range to select.</dd>
+                            </dl>
+                            <p>Specify the range that is shown in the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype.setSelectedIndex = function (index) {
+        var newIndex = Math.min(Math.max(0, index), this._ranges.length - 1);
+        
+        if (newIndex === this._selectedRangeIndex) {
+            return;
+        }
+
+        &#x2F;&#x2F; Remove selected class(es)
+        var $previousItem = (this._selectedRangeIndex &gt;= 0) ? this._ranges[this._selectedRangeIndex].$listItem : null;
+        
+        if ($previousItem) {
+            $previousItem.toggleClass(&quot;selected&quot;, false);
+        }
+        
+        this._selectedRangeIndex = newIndex;
+        
+        var $rangeItem = this._ranges[this._selectedRangeIndex].$listItem;
+        
+        this._ranges[this._selectedRangeIndex].$listItem.toggleClass(&quot;selected&quot;, true);
+
+        &#x2F;&#x2F; Remove previous editors
+        $(this.editors[0]).off(&quot;change&quot;, this._updateRelatedContainer);
+
+        this.editors.forEach(function (editor) {
+            editor.destroy(); &#x2F;&#x2F;release ref on Document
+        });
+        
+        this.editors = [];
+        this.$editorsDiv.children().remove();
+
+        &#x2F;&#x2F; Add new editor
+        var range = this._getSelectedRange();
+        this.createInlineEditorFromText(range.textRange.document, range.textRange.startLine, range.textRange.endLine, this.$editorsDiv.get(0));
+        this.editors[0].focus();
+
+        &#x2F;&#x2F; Changes in size to the inline editor should update the relatedContainer
+        &#x2F;&#x2F; Note: normally it&#39;s not kosher to listen to changes on a specific editor,
+        &#x2F;&#x2F; but in this case we&#39;re specifically concerned with changes in the given
+        &#x2F;&#x2F; editor, not general document changes.
+        $(this.editors[0]).on(&quot;change&quot;, this._handleChange);
+        
+        &#x2F;&#x2F; Cursor activity in the inline editor may cause us to horizontally scroll.
+        $(this.editors[0]).on(&quot;cursorActivity&quot;, this._ensureCursorVisible);
+
+        
+        this.editors[0].refresh();
+        
+        &#x2F;&#x2F; ensureVisibility is set to false because we don&#39;t want to scroll the main editor when the user selects a view
+        this.sizeInlineWidgetToContents(true, false);
+        this._updateRelatedContainer();
+
+        this._updateSelectedMarker();
+    };
+
+    MultiRangeInlineEditor.prototype._removeRange = function (range) {
+        &#x2F;&#x2F; If this is the last range, just close the whole widget
+        if (this._ranges.length &lt;= 1) {
+            this.close();
+            return;
+        }
+
+        &#x2F;&#x2F; Now we know there is at least one other range -&gt; found out which one this is
+        var index = this._ranges.indexOf(range);
+        
+        &#x2F;&#x2F; If the range to be removed is the selected one, first switch to another one
+        if (index === this._selectedRangeIndex) {
+            &#x2F;&#x2F; If possible, select the one below, else select the one above
+            if (index + 1 &lt; this._ranges.length) {
+                this.setSelectedIndex(index + 1);
+            } else {
+                this.setSelectedIndex(index - 1);
+            }
+        }
+
+        &#x2F;&#x2F; Now we can remove this range
+        range.$listItem.remove();
+        range.textRange.dispose();
+        this._ranges.splice(index, 1);
+
+        &#x2F;&#x2F; If the selected range is below, we need to update the index
+        if (index &lt; this._selectedRangeIndex) {
+            this._selectedRangeIndex--;
+            this._updateSelectedMarker();
+        }
+    };
+
+    MultiRangeInlineEditor.prototype._updateSelectedMarker = function () {
+        var $rangeItem = this._ranges[this._selectedRangeIndex].$listItem;
+        
+        &#x2F;&#x2F; scroll the selection to the rangeItem, use setTimeout to wait for DOM updates
+        var self = this;
+        window.setTimeout(function () {
+            var containerHeight = self.$relatedContainer.height(),
+                itemTop = $rangeItem.position().top,
+                scrollTop = self.$relatedContainer.scrollTop();
+            
+            self.$selectedMarker.css(&quot;top&quot;, itemTop);
+            self.$selectedMarker.height($rangeItem.outerHeight());
+            
+            if (containerHeight &lt;= 0) {
+                return;
+            }
+            
+            var paddingTop = _parseStyleSize($rangeItem.parent(), &quot;paddingTop&quot;);
+            
+            if ((itemTop - paddingTop) &lt; scrollTop) {
+                self.$relatedContainer.scrollTop(itemTop - paddingTop);
+            } else {
+                var itemBottom = itemTop + $rangeItem.height() + _parseStyleSize($rangeItem.parent(), &quot;paddingBottom&quot;);
+                
+                if (itemBottom &gt; (scrollTop + containerHeight)) {
+                    self.$relatedContainer.scrollTop(itemBottom - containerHeight);
+                }
+            }
+        }, 0);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>sizeInlineWidgetToContents</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>force</dt>
+                                <dd>(<em>boolean</em>) - the editor to resize</dd>
+                                <dt>ensureVisibility</dt>
+                                <dd>(<em>boolean</em>) - makes the parent editor scroll to display the inline editor. Default true.</dd>
+                            </dl>
+                            <p>Sizes the inline widget height to be the maximum between the range list height and the editor height</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>MultiRangeInlineEditor.prototype.sizeInlineWidgetToContents = function (force, ensureVisibility) {
+        &#x2F;&#x2F; Size the code mirror editors height to the editor content
+        &#x2F;&#x2F; We use &quot;call&quot; rather than &quot;apply&quot; here since ensureVisibility was an argument added just for this override.
+        MultiRangeInlineEditor.prototype.parentClass.sizeInlineWidgetToContents.call(this, force);
+        &#x2F;&#x2F; Size the widget height to the max between the editor content and the related ranges list
+        var widgetHeight = Math.max(this.$relatedContainer.find(&quot;.related&quot;).height(), this.$editorsDiv.height());
+        this.hostEditor.setInlineWidgetHeight(this, widgetHeight, ensureVisibility);
+
+        &#x2F;&#x2F; The related ranges container size itself based on htmlContent which is set by setInlineWidgetHeight above.
+        &#x2F;&#x2F; Use setTimeout to trigger a layout update before accessing positions, heights, etc.
+        window.setTimeout(this._updateRelatedContainer);
+    };</code></pre>
+                        </div>
+                    </section>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

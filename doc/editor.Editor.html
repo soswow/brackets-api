@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>editor.Editor</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.css">
+    <![endif]-->
+    <script type="text/javascript" src="../assets/js/jquery-1.7.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../assets/js/main.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">Brackets API</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="#dependencies">Dependencies</a></li>
+                    <li><a href="#variables">Variables</a></li>
+                    <li><a href="#functions">Functions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h1>editor.Editor</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3">
+            <div class="left-section">
+                <ul class="nav nav-list">
+                    <li class="nav-header">
+                        <a href="#" id="toggle-other-modules"><i class="icon-folder-close"></i> Modules (93)</a>
+                    </li>
+                </ul>
+                <ul id="other-module" class="nav nav-list">
+                    <li><a href="brackets.html">brackets</a></li>
+                    <li><a href="command.CommandManager.html">command.CommandManager</a></li>
+                    <li><a href="command.Commands.html">command.Commands</a></li>
+                    <li><a href="command.KeyBindingManager.html">command.KeyBindingManager</a></li>
+                    <li><a href="command.Menus.html">command.Menus</a></li>
+                    <li><a href="debug.DebugCommandHandlers.html">debug.DebugCommandHandlers</a></li>
+                    <li><a href="document.ChangedDocumentTracker.html">document.ChangedDocumentTracker</a></li>
+                    <li><a href="document.DocumentCommandHandlers.html">document.DocumentCommandHandlers</a></li>
+                    <li><a href="document.DocumentManager.html">document.DocumentManager</a></li>
+                    <li><a href="document.TextRange.html">document.TextRange</a></li>
+                    <li><a href="editor.CodeHintList.html">editor.CodeHintList</a></li>
+                    <li><a href="editor.CodeHintManager.html">editor.CodeHintManager</a></li>
+                    <li><a href="editor.CSSInlineEditor.html">editor.CSSInlineEditor</a></li>
+                    <li><a href="editor.Editor.html">editor.Editor</a></li>
+                    <li><a href="editor.EditorCommandHandlers.html">editor.EditorCommandHandlers</a></li>
+                    <li><a href="editor.EditorManager.html">editor.EditorManager</a></li>
+                    <li><a href="editor.EditorUtils.html">editor.EditorUtils</a></li>
+                    <li><a href="editor.InlineTextEditor.html">editor.InlineTextEditor</a></li>
+                    <li><a href="editor.InlineWidget.html">editor.InlineWidget</a></li>
+                    <li><a href="editor.MultiRangeInlineEditor.html">editor.MultiRangeInlineEditor</a></li>
+                    <li><a href="file.FileUtils.html">file.FileUtils</a></li>
+                    <li><a href="file.NativeFileError.html">file.NativeFileError</a></li>
+                    <li><a href="file.NativeFileSystem.html">file.NativeFileSystem</a></li>
+                    <li><a href="help.HelpCommandHandlers.html">help.HelpCommandHandlers</a></li>
+                    <li><a href="language.CSSUtils.html">language.CSSUtils</a></li>
+                    <li><a href="language.HTMLUtils.html">language.HTMLUtils</a></li>
+                    <li><a href="language.JSLintUtils.html">language.JSLintUtils</a></li>
+                    <li><a href="language.JSUtils.html">language.JSUtils</a></li>
+                    <li><a href="LiveDevelopment.Agents.ConsoleAgent.html">LiveDevelopment.Agents.ConsoleAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.CSSAgent.html">LiveDevelopment.Agents.CSSAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMAgent.html">LiveDevelopment.Agents.DOMAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMHelpers.html">LiveDevelopment.Agents.DOMHelpers</a></li>
+                    <li><a href="LiveDevelopment.Agents.DOMNode.html">LiveDevelopment.Agents.DOMNode</a></li>
+                    <li><a href="LiveDevelopment.Agents.EditAgent.html">LiveDevelopment.Agents.EditAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.GotoAgent.html">LiveDevelopment.Agents.GotoAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.HighlightAgent.html">LiveDevelopment.Agents.HighlightAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.NetworkAgent.html">LiveDevelopment.Agents.NetworkAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteAgent.html">LiveDevelopment.Agents.RemoteAgent</a></li>
+                    <li><a href="LiveDevelopment.Agents.RemoteFunctions.html">LiveDevelopment.Agents.RemoteFunctions</a></li>
+                    <li><a href="LiveDevelopment.Agents.ScriptAgent.html">LiveDevelopment.Agents.ScriptAgent</a></li>
+                    <li><a href="LiveDevelopment.Documents.CSSDocument.html">LiveDevelopment.Documents.CSSDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.HTMLDocument.html">LiveDevelopment.Documents.HTMLDocument</a></li>
+                    <li><a href="LiveDevelopment.Documents.JSDocument.html">LiveDevelopment.Documents.JSDocument</a></li>
+                    <li><a href="LiveDevelopment.Inspector.Inspector.html">LiveDevelopment.Inspector.Inspector</a></li>
+                    <li><a href="LiveDevelopment.LiveDevelopment.html">LiveDevelopment.LiveDevelopment</a></li>
+                    <li><a href="LiveDevelopment.main.html">LiveDevelopment.main</a></li>
+                    <li><a href="preferences.PreferencesDialogs.html">preferences.PreferencesDialogs</a></li>
+                    <li><a href="preferences.PreferencesManager.html">preferences.PreferencesManager</a></li>
+                    <li><a href="preferences.PreferenceStorage.html">preferences.PreferenceStorage</a></li>
+                    <li><a href="project.FileIndexManager.html">project.FileIndexManager</a></li>
+                    <li><a href="project.FileSyncManager.html">project.FileSyncManager</a></li>
+                    <li><a href="project.FileViewController.html">project.FileViewController</a></li>
+                    <li><a href="project.ProjectManager.html">project.ProjectManager</a></li>
+                    <li><a href="project.SidebarView.html">project.SidebarView</a></li>
+                    <li><a href="project.WorkingSetSort.html">project.WorkingSetSort</a></li>
+                    <li><a href="project.WorkingSetView.html">project.WorkingSetView</a></li>
+                    <li><a href="search.FindInFiles.html">search.FindInFiles</a></li>
+                    <li><a href="search.FindReplace.html">search.FindReplace</a></li>
+                    <li><a href="search.QuickOpen.html">search.QuickOpen</a></li>
+                    <li><a href="strings.html">strings</a></li>
+                    <li><a href="test.html">test</a></li>
+                    <li><a href="test2.html">test2</a></li>
+                    <li><a href="test3.html">test3</a></li>
+                    <li><a href="utils.AppInit.html">utils.AppInit</a></li>
+                    <li><a href="utils.Async.html">utils.Async</a></li>
+                    <li><a href="utils.BuildInfoUtils.html">utils.BuildInfoUtils</a></li>
+                    <li><a href="utils.CollectionUtils.html">utils.CollectionUtils</a></li>
+                    <li><a href="utils.ExtensionLoader.html">utils.ExtensionLoader</a></li>
+                    <li><a href="utils.ExtensionUtils.html">utils.ExtensionUtils</a></li>
+                    <li><a href="utils.Global.html">utils.Global</a></li>
+                    <li><a href="utils.KeyEvent.html">utils.KeyEvent</a></li>
+                    <li><a href="utils.NativeApp.html">utils.NativeApp</a></li>
+                    <li><a href="utils.PerfUtils.html">utils.PerfUtils</a></li>
+                    <li><a href="utils.Resizer.html">utils.Resizer</a></li>
+                    <li><a href="utils.ShellAPI.html">utils.ShellAPI</a></li>
+                    <li><a href="utils.StringUtils.html">utils.StringUtils</a></li>
+                    <li><a href="utils.TokenUtils.html">utils.TokenUtils</a></li>
+                    <li><a href="utils.UpdateNotification.html">utils.UpdateNotification</a></li>
+                    <li><a href="utils.UrlParams.html">utils.UrlParams</a></li>
+                    <li><a href="utils.ViewUtils.html">utils.ViewUtils</a></li>
+                    <li><a href="view.ViewCommandHandlers.html">view.ViewCommandHandlers</a></li>
+                    <li><a href="widgets.bootstrap-alerts.html">widgets.bootstrap-alerts</a></li>
+                    <li><a href="widgets.bootstrap-buttons.html">widgets.bootstrap-buttons</a></li>
+                    <li><a href="widgets.bootstrap-dropdown.html">widgets.bootstrap-dropdown</a></li>
+                    <li><a href="widgets.bootstrap-modal.html">widgets.bootstrap-modal</a></li>
+                    <li><a href="widgets.bootstrap-popover.html">widgets.bootstrap-popover</a></li>
+                    <li><a href="widgets.bootstrap-scrollspy.html">widgets.bootstrap-scrollspy</a></li>
+                    <li><a href="widgets.bootstrap-tabs.html">widgets.bootstrap-tabs</a></li>
+                    <li><a href="widgets.bootstrap-twipsy.html">widgets.bootstrap-twipsy</a></li>
+                    <li><a href="widgets.Dialogs.html">widgets.Dialogs</a></li>
+                    <li><a href="widgets.ModalBar.html">widgets.ModalBar</a></li>
+                    <li><a href="widgets.PopUpManager.html">widgets.PopUpManager</a></li>
+                    <li><a href="widgets.StatusBar.html">widgets.StatusBar</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="span9">
+            <section>
+                <div id="description">
+                    <p>Editor is a 1-to-1 wrapper for a CodeMirror editor instance. It layers on Brackets-specific<br />functionality and provides APIs that cleanly pass through the bits of CodeMirror that the rest<br />of our codebase may want to interact with. An Editor is always backed by a Document, and stays<br />in sync with its content; because Editor keeps the Document alive, it's important to always<br />destroy() an Editor that's going away so it can release its Document ref.</p>
+
+<p>For now, there's a distinction between the "master" Editor for a Document - which secretly acts<br />as the Document's internal model of the text state - and the multitude of "slave" secondary Editors<br />which, via Document, sync their changes to and from that master.</p>
+
+<p>For now, direct access to the underlying CodeMirror object is still possible via _codeMirror --<br />but this is considered deprecated and may go away.</p>
+
+<p>The Editor object dispatches the following events:<br />   - keyEvent -- When any key event happens in the editor (whether it changes the text or not).<br />         Event handlers are passed ({Editor}, {KeyboardEvent}). The 2nd arg is the raw DOM event.<br />         Note: most listeners will only want to respond when event.type === "keypress".<br />   - cursorActivity -- When the user moves the cursor or changes the selection, or an edit occurs.<br />         Note: do not listen to this in order to be generally informed of edits--listen to the<br />         "change" event on Document instead.<br />   - scroll -- When the editor is scrolled, either by user action or programmatically.<br />   - lostContent -- When the backing Document changes in such a way that this Editor is no longer<br />         able to display accurate text. This occurs if the Document's file is deleted, or in certain<br />         Document->editor syncing edge cases that we do not yet support (the latter cause will<br />         eventually go away). </p>
+
+<p>The Editor also dispatches "change" events internally, but you should listen for those on<br />Documents, not Editors.</p>
+
+<p>These are jQuery events, so to listen for them you do something like this:<br />   $(editorInstance).on("eventname", handler);</p>
+                </div>
+            </section>
+
+            <section id="dependencies">
+                <h3>Dependencies</h3>
+                <ul class="nav nav-list">
+                    <li><a href="command.CommandManager.html">command.CommandManager</a></li>
+                    <li><a href="command.Commands.html">command.Commands</a></li>
+                    <li><a href="command.Menus.html">command.Menus</a></li>
+                    <li><a href="document.TextRange.html">document.TextRange</a></li>
+                    <li><a href="editor.CodeHintManager.html">editor.CodeHintManager</a></li>
+                    <li><a href="editor.EditorManager.html">editor.EditorManager</a></li>
+                    <li><a href="preferences.PreferencesManager.html">preferences.PreferencesManager</a></li>
+                    <li><a href="strings.html">strings</a></li>
+                    <li><a href="utils.PerfUtils.html">utils.PerfUtils</a></li>
+                    <li><a href="utils.ViewUtils.html">utils.ViewUtils</a></li>
+                </ul>
+            </section>
+
+            <section id="variables">
+                <h3>Variables <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+                <div class="member private">
+
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_indentUnit</h4>
+                    <dl>
+                            <dt>Private</dt>
+                    </dl>
+                    <p>@type {boolean}  Global setting: Indent unit (i.e. number of spaces when indenting)</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>var _indentUnit = _prefs.getValue(&quot;indentUnit&quot;);</code></pre>
+                </div>
+                <div class="member private">
+
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_instances</h4>
+                    <dl>
+                            <dt>Type</dt>
+                                <dd>Array.<Editor></dd>
+                            <dt>Private</dt>
+                    </dl>
+                    <p>List of all current (non-destroy()ed) Editor instances. Needed when changing global preferences<br />that affect all editors, e.g. tabbing or color scheme settings.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>var _instances = [];</code></pre>
+                </div>
+                <div class="member private">
+
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_prefs</h4>
+                    <dl>
+                            <dt>Private</dt>
+                    </dl>
+                    <p>Editor preferences</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>var _prefs = PreferencesManager.getPreferenceStorage(PREFERENCES_CLIENT_ID, defaultPrefs);</code></pre>
+                </div>
+                <div class="member private">
+
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_tabSize</h4>
+                    <dl>
+                            <dt>Private</dt>
+                    </dl>
+                    <p>@type {boolean}  Global setting: Tab size</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>var _tabSize = _prefs.getValue(&quot;tabSize&quot;);</code></pre>
+                </div>
+                <div class="member private">
+
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_useTabChar</h4>
+                    <dl>
+                            <dt>Private</dt>
+                    </dl>
+                    <p>@type {boolean}  Global setting: When inserting new text, use tab characters? (instead of spaces)</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>var _useTabChar = _prefs.getValue(&quot;useTabChar&quot;);</code></pre>
+                </div>
+                <!--</ul>-->
+            </section>
+
+            <section id="functions">
+                <h3>Functions <label class="checkbox">
+                    <input class="toggle-public" type="checkbox"> Show Private Members
+                </label></h3>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_checkElectricChars</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                    </dl>
+                    <p>Checks if the user just typed a closing brace/bracket/paren, and considers automatically<br />back-indenting it if so.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _checkElectricChars(jqEvent, editor, event) {
+        var instance = editor._codeMirror;
+        if (event.type === &quot;keypress&quot;) {
+            var keyStr = String.fromCharCode(event.which || event.keyCode);
+            if (&#x2F;[\]\{\}\)]&#x2F;.test(keyStr)) {
+                &#x2F;&#x2F; If all text before the cursor is whitespace, auto-indent it
+                var cursor = instance.getCursor();
+                var lineStr = instance.getLine(cursor.line);
+                var nonWS = lineStr.search(&#x2F;\S&#x2F;);
+                
+                if (nonWS === -1 || nonWS &gt;= cursor.ch) {
+                    &#x2F;&#x2F; Need to do the auto-indent on a timeout to ensure
+                    &#x2F;&#x2F; the keypress is handled before auto-indenting.
+                    &#x2F;&#x2F; This is the same timeout value used by the
+                    &#x2F;&#x2F; electricChars feature in CodeMirror.
+                    window.setTimeout(function () {
+                        instance.indentLine(cursor.line);
+                    }, 75);
+                }
+            }
+        }
+    }
+
+    function _handleKeyEvents(jqEvent, editor, event) {
+        _checkElectricChars(jqEvent, editor, event);
+
+        &#x2F;&#x2F; Pass the key event to the code hint manager. It may call preventDefault() on the event.
+        CodeHintManager.handleKeyEvent(editor, event);
+    }
+
+    function _handleSelectAll() {
+        var result = new $.Deferred(),
+            editor = EditorManager.getFocusedEditor();
+
+        if (editor) {
+            editor._selectAllVisible();
+            result.resolve();
+        } else {
+            result.reject();    &#x2F;&#x2F; command not handled
+        }
+
+        return result.promise();
+    }</code></pre>
+                </div>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_handleSoftTabNavigation</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                            <dt>instance</dt>
+                            <dd>(<em>!CodeMirror</em>) - CodeMirror instance </dd>
+                            <dt>direction</dt>
+                            <dd>(<em>number</em>) - Direction of movement: 1 for forward, -1 for backward</dd>
+                            <dt>functionName</dt>
+                            <dd>(<em>function</em>) - name of the CodeMirror function to call</dd>
+                            <dt>Returns</dt>
+                            <dd>(<em>boolean</em>) - true if key was handled</dd>
+                    </dl>
+                    <p>Handle left arrow, right arrow, backspace and delete keys when soft tabs are used.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _handleSoftTabNavigation(instance, direction, functionName) {
+        var handled = false;
+        if (!instance.getOption(&quot;indentWithTabs&quot;)) {
+            var cursor = instance.getCursor(),
+                jump = cursor.ch % _indentUnit,
+                line = instance.getLine(cursor.line);
+
+            if (direction === 1) {
+                jump = _indentUnit - jump;
+
+                if (cursor.ch + jump &gt; line.length) { &#x2F;&#x2F; Jump would go beyond current line
+                    return false;
+                }
+
+                if (line.substr(cursor.ch, jump).search(&#x2F;\S&#x2F;) === -1) {
+                    instance[functionName](jump, &quot;char&quot;);
+                    handled = true;
+                }
+            } else {
+                &#x2F;&#x2F; Quick exit if we are at the beginning of the line
+                if (cursor.ch === 0) {
+                    return false;
+                }
+                
+                &#x2F;&#x2F; If we are on the tab boundary, jump by the full amount, 
+                &#x2F;&#x2F; but not beyond the start of the line.
+                if (jump === 0) {
+                    jump = _indentUnit;
+                }
+
+                &#x2F;&#x2F; Search backwards to the first non-space character
+                var offset = line.substr(cursor.ch - jump, jump).search(&#x2F;\s*$&#x2F;g);
+
+                if (offset !== -1) { &#x2F;&#x2F; Adjust to jump to first non-space character
+                    jump -= offset;
+                }
+
+                if (jump &gt; 0) {
+                    instance[functionName](-jump, &quot;char&quot;);
+                    handled = true;
+                }
+            }
+        }
+
+        return handled;
+    }</code></pre>
+                </div>
+                <div class="member private">
+                    <span class="pull-right scope">
+                        Private
+                        
+                    </span>
+                    <h4>_handleTabKey</h4>
+                    <!--<strong>Params:</strong>-->
+                    <dl>
+                            <dt>instance</dt>
+                            <dd>(<em>!CodeMirror</em>) - CodeMirror instance.</dd>
+                    </dl>
+                    <p>Handle Tab key press.</p>
+                    <button class="btn btn-small show-code">Show code</button>
+                    <pre class="code"><code>function _handleTabKey(instance) {
+        &#x2F;&#x2F; Tab key handling is done as follows:
+        &#x2F;&#x2F; 1. If the selection is before any text and the indentation is to the left of 
+        &#x2F;&#x2F;    the proper indentation then indent it to the proper place. Otherwise,
+        &#x2F;&#x2F;    add another tab. In either case, move the insertion point to the 
+        &#x2F;&#x2F;    beginning of the text.
+        &#x2F;&#x2F; 2. If the selection is after the first non-space character, and is not an 
+        &#x2F;&#x2F;    insertion point, indent the entire line(s).
+        &#x2F;&#x2F; 3. If the selection is after the first non-space character, and is an 
+        &#x2F;&#x2F;    insertion point, insert a tab character or the appropriate number 
+        &#x2F;&#x2F;    of spaces to pad to the nearest tab boundary.
+        var from = instance.getCursor(true),
+            to = instance.getCursor(false),
+            line = instance.getLine(from.line),
+            indentAuto = false,
+            insertTab = false;
+        
+        if (from.line === to.line) {
+            if (line.search(&#x2F;\S&#x2F;) &gt; to.ch || to.ch === 0) {
+                indentAuto = true;
+            }
+        }
+
+        if (indentAuto) {
+            var currentLength = line.length;
+            CodeMirror.commands.indentAuto(instance);
+            &#x2F;&#x2F; If the amount of whitespace didn&#39;t change, insert another tab
+            if (instance.getLine(from.line).length === currentLength) {
+                insertTab = true;
+                to.ch = 0;
+            }
+        } else if (instance.somethingSelected()) {
+            CodeMirror.commands.indentMore(instance);
+        } else {
+            insertTab = true;
+        }
+        
+        if (insertTab) {
+            if (instance.getOption(&quot;indentWithTabs&quot;)) {
+                CodeMirror.commands.insertTab(instance);
+            } else {
+                var i, ins = &quot;&quot;, numSpaces = _indentUnit;
+                numSpaces -= to.ch % numSpaces;
+                for (i = 0; i &lt; numSpaces; i++) {
+                    ins += &quot; &quot;;
+                }
+                instance.replaceSelection(ins, &quot;end&quot;);
+            }
+        }
+    }</code></pre>
+                </div>
+            </section>
+
+
+            <section id="classes">
+                <h2>Classes</h2>
+                    <div class="member public">
+                        <span class="pull-right scope">
+                            Constructor
+                        </span>
+                        <h4>Editor</h4>
+                        <!--<strong>Params:</strong>-->
+                        <dl>
+                            <dt>document</dt>
+                            <dd>(<em>!Document</em>) - </dd>
+                            <dt>makeMasterEditor</dt>
+                            <dd>(<em>!boolean</em>) - If true, this Editor will set itself as the (secret) "master"</dd>
+                            <dt>mode</dt>
+                            <dd>(<em>!string</em>) - Syntax-highlighting language mode; "" means plain-text mode.</dd>
+                            <dt>container</dt>
+                            <dd>(<em>!jQueryObject</em>) - Container to add the editor to.</dd>
+                            <dt>function(Editor)&gt;}</dt>
+                            <dd>(<em>!Object&lt;string, </em>) - additionalKeys Mapping of keyboard shortcuts to</dd>
+                            <dt>number,</dt>
+                            <dd>(<em>startLine:</em>) - endLine: number}=} range If specified, range of lines within the document</dd>
+                        </dl>
+                        <p></p>
+
+<p>Creates a new CodeMirror editor instance bound to the given Document. The Document need not have<br />a "master" Editor realized yet, even if makeMasterEditor is false; in that case, the first time<br />an edit occurs we will automatically ask EditorManager to create a "master" editor to render the<br />Document modifiable.</p>
+
+<p>ALWAYS call destroy() when you are done with an Editor - otherwise it will leak a Document ref.</p>
+                        <button class="btn btn-small show-code">Show code</button>
+                        <pre class="code"><code>function Editor(document, makeMasterEditor, mode, container, additionalKeys, range) {
+        var self = this;
+        
+        _instances.push(this);
+        
+        &#x2F;&#x2F; Attach to document: add ref &amp; handlers
+        this.document = document;
+        document.addRef();
+        
+        if (range) {    &#x2F;&#x2F; attach this first: want range updated before we process a change
+            this._visibleRange = new TextRange(document, range.startLine, range.endLine);
+        }
+        
+        &#x2F;&#x2F; store this-bound version of listeners so we can remove them later
+        this._handleDocumentChange = this._handleDocumentChange.bind(this);
+        this._handleDocumentDeleted = this._handleDocumentDeleted.bind(this);
+        $(document).on(&quot;change&quot;, this._handleDocumentChange);
+        $(document).on(&quot;deleted&quot;, this._handleDocumentDeleted);
+        
+        &#x2F;&#x2F; (if makeMasterEditor, we attach the Doc back to ourselves below once we&#39;re fully initialized)
+        
+        this._inlineWidgets = [];
+        
+        &#x2F;&#x2F; Editor supplies some standard keyboard behavior extensions of its own
+        var codeMirrorKeyMap = {
+            &quot;Tab&quot;: _handleTabKey,
+            &quot;Shift-Tab&quot;: &quot;indentLess&quot;,
+
+            &quot;Left&quot;: function (instance) {
+                if (!_handleSoftTabNavigation(instance, -1, &quot;moveH&quot;)) {
+                    CodeMirror.commands.goCharLeft(instance);
+                }
+            },
+            &quot;Right&quot;: function (instance) {
+                if (!_handleSoftTabNavigation(instance, 1, &quot;moveH&quot;)) {
+                    CodeMirror.commands.goCharRight(instance);
+                }
+            },
+            &quot;Backspace&quot;: function (instance) {
+                if (!_handleSoftTabNavigation(instance, -1, &quot;deleteH&quot;)) {
+                    CodeMirror.commands.delCharLeft(instance);
+                }
+            },
+            &quot;Delete&quot;: function (instance) {
+                if (!_handleSoftTabNavigation(instance, 1, &quot;deleteH&quot;)) {
+                    CodeMirror.commands.delCharRight(instance);
+                }
+            },
+            &quot;Esc&quot;: function (instance) {
+                self.removeAllInlineWidgets();
+            },
+            &quot;Cmd-Left&quot;: &quot;goLineStartSmart&quot;,
+            &quot;&#39;&gt;&#39;&quot;: function (cm) { cm.closeTag(cm, &#39;&gt;&#39;); },
+            &quot;&#39;&#x2F;&#39;&quot;: function (cm) { cm.closeTag(cm, &#39;&#x2F;&#39;); }
+        };
+        
+        EditorManager.mergeExtraKeys(self, codeMirrorKeyMap, additionalKeys);
+        
+        &#x2F;&#x2F; We&#39;d like null&#x2F;&quot;&quot; to mean plain text mode. CodeMirror defaults to plaintext for any
+        &#x2F;&#x2F; unrecognized mode, but it complains on the console in that fallback case: so, convert
+        &#x2F;&#x2F; here so we&#39;re always explicit, avoiding console noise.
+        if (!mode) {
+            mode = &quot;text&#x2F;plain&quot;;
+        }
+        
+        &#x2F;&#x2F; Create the CodeMirror instance
+        &#x2F;&#x2F; (note: CodeMirror doesn&#39;t actually require using &#39;new&#39;, but jslint complains without it)
+        this._codeMirror = new CodeMirror(container, {
+            electricChars: false,   &#x2F;&#x2F; we use our own impl of this to avoid CodeMirror bugs; see _checkElectricChars()
+            indentWithTabs: _useTabChar,
+            tabSize: _tabSize,
+            indentUnit: _indentUnit,
+            lineNumbers: true,
+            matchBrackets: true,
+            dragDrop: false,    &#x2F;&#x2F; work around issue #1123
+            extraKeys: codeMirrorKeyMap
+        });
+        
+        &#x2F;&#x2F; Can&#39;t get CodeMirror&#39;s focused state without searching for
+        &#x2F;&#x2F; CodeMirror-focused. Instead, track focus via onFocus and onBlur
+        &#x2F;&#x2F; options and track state with this._focused
+        this._focused = false;
+        
+        this._installEditorListeners();
+        
+        $(this)
+            .on(&quot;keyEvent&quot;, _handleKeyEvents)
+            .on(&quot;change&quot;, this._handleEditorChange.bind(this));
+        
+        &#x2F;&#x2F; Set code-coloring mode BEFORE populating with text, to avoid a flash of uncolored text
+        this._codeMirror.setOption(&quot;mode&quot;, mode);
+        
+        &#x2F;&#x2F; Initially populate with text. This will send a spurious change event, so need to make
+        &#x2F;&#x2F; sure this is understood as a &#39;sync from document&#39; case, not a genuine edit
+        this._duringSync = true;
+        this._resetText(document.getText());
+        this._duringSync = false;
+        
+        if (range) {
+            &#x2F;&#x2F; Hide all lines other than those we want to show. We do this rather than trimming the
+            &#x2F;&#x2F; text itself so that the editor still shows accurate line numbers.
+            this._codeMirror.operation(function () {
+                var i;
+                for (i = 0; i &lt; range.startLine; i++) {
+                    self._hideLine(i);
+                }
+                var lineCount = self.lineCount();
+                for (i = range.endLine + 1; i &lt; lineCount; i++) {
+                    self._hideLine(i);
+                }
+            });
+            this.setCursorPos(range.startLine, 0);
+        }
+
+        &#x2F;&#x2F; Now that we&#39;re fully initialized, we can point the document back at us if needed
+        if (makeMasterEditor) {
+            document._makeEditable(this);
+        }
+        
+        &#x2F;&#x2F; Add scrollTop property to this object for the scroll shadow code to use
+        Object.defineProperty(this, &quot;scrollTop&quot;, {
+            get: function () {
+                return this._codeMirror.getScrollInfo().y;
+            }
+        });
+    }</code></pre>
+                    </div>
+
+                    <section class="properties">
+                        <h3>Properties<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_codeMirror</h4>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd>!CodeMirror</dd>
+                                <dt>Private</dt>
+                            </dl>
+                            <p>NOTE: this is actually "semi-private": EditorManager also accesses this field... as well as<br />a few other modules. However, we should try to gradually move most code away from talking to<br />CodeMirror directly.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._codeMirror = null;</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_duringSync</h4>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd>!boolean</dd>
+                                <dt>Private</dt>
+                            </dl>
+                            <p>If true, we're in the middle of syncing to/from the Document. Used to ignore spurious change<br />events caused by us (vs. change events caused by others, which we need to pay attention to).</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._duringSync = false;</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_inlineWidgets</h4>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd>!Array.<id:number, </dd>
+                                <dt>Private</dt>
+                            </dl>
+                            <p></p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._inlineWidgets = null;</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_visibleRange</h4>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd>?TextRange</dd>
+                                <dt>Private</dt>
+                            </dl>
+                            <p></p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._visibleRange = null;
+    
+    
+    &#x2F;&#x2F; Global settings that affect all Editor instances (both currently open Editors as well as those created
+    &#x2F;&#x2F; in the future)</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>document</h4>
+                            <dl>
+                                <dt>Type</dt>
+                                <dd>!Document</dd>
+                            </dl>
+                            <p>The Document we're bound to</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.document = null;</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="methods">
+                        <h3>Methods<label class="checkbox">
+                            <input class="toggle-public" type="checkbox"> Show Private Members
+                        </label></h3>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_fireWidgetOffsetTopChanged</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>inlineWidget</dt>
+                                <dd>(<em>!InlineWidget</em>) - </dd>
+                            </dl>
+                            <p>Fire "offsetTopChanged" events when inline editor positions change due to<br />height changes of other inline editors.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._fireWidgetOffsetTopChanged = function (lineNum) {
+        var self = this,
+            otherLineNum;
+        
+        this.getInlineWidgets().forEach(function (other) {
+            otherLineNum = self._getInlineWidgetLineNumber(other);
+            
+            if (otherLineNum &gt; lineNum) {
+                $(other).triggerHandler(&quot;offsetTopChanged&quot;);
+            }
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_getInlineWidgetLineNumber</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>inlineWidget</dt>
+                                <dd>(<em>!InlineWidget</em>) - </dd>
+                                <dt>Returns</dt>
+                                <dd>(<em>number</em>) - The line number of the widget or -1 if not found.</dd>
+                            </dl>
+                            <p>Get the starting line number for an inline widget.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._getInlineWidgetLineNumber = function (inlineWidget) {
+        var info = this._codeMirror.getInlineWidgetInfo(inlineWidget.id);
+        return (info &amp;&amp; info.line) || -1;
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_getLineSpaceElement</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the lineSpace element within the editor (the container around the individual lines of code).<br />FUTURE: This is fairly CodeMirror-specific. Logic that depends on this may break if we switch<br />editors.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._getLineSpaceElement = function () {
+        return $(&quot;.CodeMirror-lines&quot;, this.getScrollerElement()).children().get(0);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_handleDocumentChange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Responds to changes in the Document's text, syncing the changes into our CodeMirror instance.<br />There are several cases where we want to ignore a Document change:<br /> - if we're the master editor, Document changes should be ignored becuase we already have the right<br />   text (either the change originated with us, or it has already been set into us by Document)<br /> - if we're a secondary editor, Document changes should be ignored if they were caused by us sending<br />   the document an editor change that originated with us</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._handleDocumentChange = function (event, doc, changeList) {
+        var change;
+        
+        &#x2F;&#x2F; we&#39;re currently syncing to the Document, so don&#39;t echo back FROM the Document
+        if (this._duringSync) {
+            return;
+        }
+        
+        if (this.document._masterEditor !== this) {
+            &#x2F;&#x2F; Secondary editor:
+            &#x2F;&#x2F; we&#39;re not the ground truth; and if we got here, this was a Document change that
+            &#x2F;&#x2F; didn&#39;t come from us (e.g. a sync from another editor, a direct programmatic change
+            &#x2F;&#x2F; to the document, or a sync from external disk changes)... so sync from the Document
+            this._duringSync = true;
+            this._applyChanges(changeList);
+            this._duringSync = false;
+        }
+        &#x2F;&#x2F; Else, Master editor:
+        &#x2F;&#x2F; we&#39;re the ground truth; nothing to do since Document change is just echoing our
+        &#x2F;&#x2F; editor changes
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_handleDocumentDeleted</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Responds to the Document's underlying file being deleted. The Document is now basically dead,<br />so we must close.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._handleDocumentDeleted = function (event) {
+        &#x2F;&#x2F; Pass the delete event along as the cause (needed in MultiRangeInlineEditor)
+        $(this).triggerHandler(&quot;lostContent&quot;, [event]);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_handleEditorChange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Responds to changes in the CodeMirror editor's text, syncing the changes to the Document.<br />There are several cases where we want to ignore a CodeMirror change:<br /> - if we're the master editor, editor changes can be ignored because Document is already listening<br />   for our changes<br /> - if we're a secondary editor, editor changes should be ignored if they were caused by us reacting<br />   to a Document change</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._handleEditorChange = function (event, editor, changeList) {
+        &#x2F;&#x2F; we&#39;re currently syncing from the Document, so don&#39;t echo back TO the Document
+        if (this._duringSync) {
+            return;
+        }
+        
+        &#x2F;&#x2F; Secondary editor: force creation of &quot;master&quot; editor backing the model, if doesn&#39;t exist yet
+        this.document._ensureMasterEditor();
+        
+        if (this.document._masterEditor !== this) {
+            &#x2F;&#x2F; Secondary editor:
+            &#x2F;&#x2F; we&#39;re not the ground truth; if we got here, this was a real editor change (not a
+            &#x2F;&#x2F; sync from the real ground truth), so we need to sync from us into the document
+            &#x2F;&#x2F; (which will directly push the change into the master editor).
+            &#x2F;&#x2F; FUTURE: Technically we should add a replaceRange() method to Document and go through
+            &#x2F;&#x2F; that instead of talking to its master editor directly. It&#39;s not clear yet exactly
+            &#x2F;&#x2F; what the right Document API would be, though.
+            this._duringSync = true;
+            this.document._masterEditor._applyChanges(changeList);
+            this._duringSync = false;
+            
+            &#x2F;&#x2F; Update which lines are hidden inside our editor, since we&#39;re not going to go through
+            &#x2F;&#x2F; _applyChanges() in our own editor.
+            this._updateHiddenLines();
+        }
+        &#x2F;&#x2F; Else, Master editor:
+        &#x2F;&#x2F; we&#39;re the ground truth; nothing else to do, since Document listens directly to us
+        &#x2F;&#x2F; note: this change might have been a real edit made by the user, OR this might have
+        &#x2F;&#x2F; been a change synced from another editor
+        
+        CodeHintManager.handleChange(this);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_hideLine</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt></dt>
+                                <dd>(<em>!number</em>) - </dd>
+                            </dl>
+                            <p>Hides the specified line number in the editor</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._hideLine = function (lineNumber) {
+        var value = this._codeMirror.hideLine(lineNumber);
+        
+        &#x2F;&#x2F; when this line is hidden, notify all following inline widgets of a position change
+        this._fireWidgetOffsetTopChanged(lineNumber);
+        
+        return value;
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_installEditorListeners</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Install singleton event handlers on the CodeMirror instance, translating them into multi-<br />listener-capable jQuery events on the Editor instance.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._installEditorListeners = function () {
+        var self = this;
+        
+        &#x2F;&#x2F; FUTURE: if this list grows longer, consider making this a more generic mapping
+        &#x2F;&#x2F; NOTE: change is a &quot;private&quot; event--others shouldn&#39;t listen to it on Editor, only on
+        &#x2F;&#x2F; Document
+        this._codeMirror.setOption(&quot;onChange&quot;, function (instance, changeList) {
+            $(self).triggerHandler(&quot;change&quot;, [self, changeList]);
+        });
+        this._codeMirror.setOption(&quot;onKeyEvent&quot;, function (instance, event) {
+            $(self).triggerHandler(&quot;keyEvent&quot;, [self, event]);
+            return event.defaultPrevented;   &#x2F;&#x2F; false tells CodeMirror we didn&#39;t eat the event
+        });
+        this._codeMirror.setOption(&quot;onCursorActivity&quot;, function (instance) {
+            $(self).triggerHandler(&quot;cursorActivity&quot;, [self]);
+        });
+        this._codeMirror.setOption(&quot;onScroll&quot;, function (instance) {
+            &#x2F;&#x2F; If this editor is visible, close all dropdowns on scroll.
+            &#x2F;&#x2F; (We don&#39;t want to do this if we&#39;re just scrolling in a non-visible editor
+            &#x2F;&#x2F; in response to some document change event.)
+            if (self.isFullyVisible()) {
+                Menus.closeAll();
+            }
+
+            $(self).triggerHandler(&quot;scroll&quot;, [self]);
+        
+            &#x2F;&#x2F; notify all inline widgets of a position change
+            self._fireWidgetOffsetTopChanged(self.getFirstVisibleLine() - 1);
+        });
+
+        &#x2F;&#x2F; Convert CodeMirror onFocus events to EditorManager activeEditorChanged
+        this._codeMirror.setOption(&quot;onFocus&quot;, function () {
+            self._focused = true;
+            EditorManager._notifyActiveEditorChanged(self);
+        });
+        
+        this._codeMirror.setOption(&quot;onBlur&quot;, function () {
+            self._focused = false;
+            &#x2F;&#x2F; EditorManager only cares about other Editors gaining focus, so we don&#39;t notify it of anything here
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_removeInlineWidgetInternal</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>inlineId</dt>
+                                <dd>(<em>number</em>) - id returned by addInlineWidget().</dd>
+                            </dl>
+                            <p>Cleans up the given inline widget from our internal list of widgets.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._removeInlineWidgetInternal = function (inlineId) {
+        var i;
+        var l = this._inlineWidgets.length;
+        for (i = 0; i &lt; l; i++) {
+            if (this._inlineWidgets[i].id === inlineId) {
+                this._inlineWidgets.splice(i, 1);
+                break;
+            }
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_resetText</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>text</dt>
+                                <dd>(<em>!string</em>) - </dd>
+                            </dl>
+                            <p>Sets the contents of the editor and clears the undo/redo history. Dispatches a change event.<br />Semi-private: only Document should call this.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._resetText = function (text) {
+        var perfTimerName = PerfUtils.markStart(&quot;Edtitor._resetText()\t&quot; + (!this.document || this.document.file.fullPath));
+
+        var cursorPos = this.getCursorPos(),
+            scrollPos = this.getScrollPos();
+        
+        &#x2F;&#x2F; This *will* fire a change event, but we clear the undo immediately afterward
+        this._codeMirror.setValue(text);
+        
+        &#x2F;&#x2F; Make sure we can&#39;t undo back to the empty state before setValue()
+        this._codeMirror.clearHistory();
+        
+        &#x2F;&#x2F; restore cursor and scroll positions
+        this.setCursorPos(cursorPos);
+        this.setScrollPos(scrollPos.x, scrollPos.y);
+
+        PerfUtils.addMeasurement(perfTimerName);
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_selectAllVisible</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Handles Select All specially when we have a visible range in order to work around<br />bugs in CodeMirror when lines are hidden.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._selectAllVisible = function () {
+        var startLine = this.getFirstVisibleLine(),
+            endLine = this.getLastVisibleLine();
+        this.setSelection({line: startLine, ch: 0},
+                          {line: endLine, ch: this.document.getLine(endLine).length});
+    };</code></pre>
+                        </div>
+                        <div class="member private">
+                            <span class="pull-right scope">
+                                Private
+                                
+                            </span>
+                            <h4>_updateHiddenLines</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Ensures that the lines that are actually hidden in the inline editor correspond to<br />the desired visible range.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype._updateHiddenLines = function () {
+        if (this._visibleRange) {
+            var cm = this._codeMirror,
+                self = this;
+            cm.operation(function () {
+                &#x2F;&#x2F; TODO: could make this more efficient by only iterating across the min-max line
+                &#x2F;&#x2F; range of the union of all changes
+                var i;
+                for (i = 0; i &lt; cm.lineCount(); i++) {
+                    if (i &lt; self._visibleRange.startLine || i &gt; self._visibleRange.endLine) {
+                        self._hideLine(i);
+                    } else {
+                        &#x2F;&#x2F; Double-check that the set of NON-hidden lines matches our range too
+                        console.assert(!cm.getLineHandle(i).hidden);
+                    }
+                }
+            });
+        }
+    };
+    
+    Editor.prototype._applyChanges = function (changeList) {
+        &#x2F;&#x2F; _visibleRange has already updated via its own Document listener. See if this change caused
+        &#x2F;&#x2F; it to lose sync. If so, our whole view is stale - signal our owner to close us.
+        if (this._visibleRange) {
+            if (this._visibleRange.startLine === null || this._visibleRange.endLine === null) {
+                $(this).triggerHandler(&quot;lostContent&quot;);
+                return;
+            }
+        }
+        
+        &#x2F;&#x2F; Apply text changes to CodeMirror editor
+        var cm = this._codeMirror;
+        cm.operation(function () {
+            var change, newText;
+            for (change = changeList; change; change = change.next) {
+                newText = change.text.join(&#39;\n&#39;);
+                if (!change.from || !change.to) {
+                    if (change.from || change.to) {
+                        console.error(&quot;Change record received with only one end undefined--replacing entire text&quot;);
+                    }
+                    cm.setValue(newText);
+                } else {
+                    cm.replaceRange(newText, change.from, change.to);
+                }
+                
+            }
+        });
+        
+        &#x2F;&#x2F; The update above may have inserted new lines - must hide any that fall outside our range
+        this._updateHiddenLines();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>addInlineWidget</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>!line:number, </em>) - pos Position in text to anchor the inline.</dd>
+                                <dt>inlineWidget</dt>
+                                <dd>(<em>!InlineWidget</em>) - The widget to add.</dd>
+                            </dl>
+                            <p>Adds an inline widget below the given line. If any inline widget was already open for that<br />line, it is closed without warning.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.addInlineWidget = function (pos, inlineWidget) {
+        var self = this;
+        inlineWidget.id = this._codeMirror.addInlineWidget(pos, inlineWidget.htmlContent, inlineWidget.height, function (id) {
+            self._removeInlineWidgetInternal(id);
+            inlineWidget.onClosed();
+        });
+        this._inlineWidgets.push(inlineWidget);
+        inlineWidget.onAdded();
+        
+        &#x2F;&#x2F; once this widget is added, notify all following inline widgets of a position change
+        this._fireWidgetOffsetTopChanged(pos.line);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>destroy</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Removes this editor from the DOM and detaches from the Document. If this is the "master"<br />Editor that is secretly providing the Document's backing state, then the Document reverts to<br />a read-only string-backed mode.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.destroy = function () {
+        &#x2F;&#x2F; CodeMirror docs for getWrapperElement() say all you have to do is &quot;Remove this from your
+        &#x2F;&#x2F; tree to delete an editor instance.&quot;
+        $(this.getRootElement()).remove();
+        
+        _instances.splice(_instances.indexOf(this), 1);
+        
+        &#x2F;&#x2F; Disconnect from Document
+        this.document.releaseRef();
+        $(this.document).off(&quot;change&quot;, this._handleDocumentChange);
+        $(this.document).off(&quot;deleted&quot;, this._handleDocumentDeleted);
+        
+        if (this._visibleRange) {   &#x2F;&#x2F; TextRange also refs the Document
+            this._visibleRange.dispose();
+        }
+        
+        &#x2F;&#x2F; If we&#39;re the Document&#39;s master editor, disconnecting from it has special meaning
+        if (this.document._masterEditor === this) {
+            this.document._makeNonEditable();
+        }
+        
+        &#x2F;&#x2F; Destroying us destroys any inline widgets we&#39;re hosting. Make sure their closeCallbacks
+        &#x2F;&#x2F; run, at least, since they may also need to release Document refs
+        this._inlineWidgets.forEach(function (inlineWidget) {
+            inlineWidget.onClosed();
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>focus</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gives focus to the editor control</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.focus = function () {
+        this._codeMirror.focus();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getCursorPos</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>expandTabs</dt>
+                                <dd>(<em>boolean</em>) - If true, return the actual visual column number instead of the character offset in</dd>
+                                <dt>Returns</dt>
+                                <dd>(<em>!line:number, </em>) - ch:number}</dd>
+                            </dl>
+                            <p>Gets the current cursor position within the editor. If there is a selection, returns whichever<br />end of the range the cursor lies at.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getCursorPos = function (expandTabs) {
+        var cursor = this._codeMirror.getCursor();
+        
+        if (expandTabs) {
+            var line    = this._codeMirror.getRange({line: cursor.line, ch: 0}, cursor),
+                tabSize = Editor.getTabSize(),
+                column  = 0,
+                i;
+
+            for (i = 0; i &lt; line.length; i++) {
+                if (line[i] === &#39;\t&#39;) {
+                    column += (tabSize - (column % tabSize));
+                } else {
+                    column++;
+                }
+            }
+            
+            cursor.ch = column;
+        }
+        
+        return cursor;
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getFirstVisibleLine</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the number of the first visible line in the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getFirstVisibleLine = function () {
+        return (this._visibleRange ? this._visibleRange.startLine : 0);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getInlineWidgets</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>Returns</dt>
+                                <dd>(<em>!Array.&lt;id:number, </em>) - data:Object}>}</dd>
+                            </dl>
+                            <p>Returns a list of all inline widgets currently open in this editor. Each entry contains the<br />inline's id, and the data parameter that was passed to addInlineWidget().</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getInlineWidgets = function () {
+        return this._inlineWidgets;
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getLastVisibleLine</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the number of the last visible line in the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getLastVisibleLine = function () {
+        return (this._visibleRange ? this._visibleRange.endLine : this.lineCount() - 1);
+    };
+
+    &#x2F;&#x2F; FUTURE change to &quot;hideLines()&quot; API that hides a range of lines at once in a single operation, then fires offsetTopChanged afterwards.</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getModeForDocument</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>Returns</dt>
+                                <dd>(<em>Object, String</em>) - Object or Name of syntax-highlighting mode; see {@link EditorUtils#getModeFromFileExtension()}.</dd>
+                            </dl>
+                            <p>Gets the syntax-highlighting mode for the document.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getModeForDocument = function () {
+        return this._codeMirror.getOption(&quot;mode&quot;);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getModeForSelection</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>Returns</dt>
+                                <dd>(<em>?(Object, String)</em>) - Object or Name of syntax-highlighting mode; see {@link EditorUtils#getModeFromFileExtension()}.</dd>
+                            </dl>
+                            <p>Gets the syntax-highlighting mode for the current selection or cursor position. (The mode may<br />vary within one file due to embedded languages, e.g. JS embedded in an HTML script block).</p>
+
+<p>Returns null if the mode at the start of the selection differs from the mode at the end -<br />an <em>approximation</em> of whether the mode is consistent across the whole range (a pattern like<br />A-B-A would return A as the mode, not null).</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getModeForSelection = function () {
+        var sel = this.getSelection();
+        
+        &#x2F;&#x2F; Check for mixed mode info (meaning mode varies depending on position)
+        &#x2F;&#x2F; TODO (#921): this only works for certain mixed modes; some do not expose this info
+        var startState = this._codeMirror.getTokenAt(sel.start).state;
+        if (startState.mode) {
+            var startMode = startState.mode;
+            
+            &#x2F;&#x2F; If mixed mode, check that mode is the same at start &amp; end of selection
+            if (sel.start.line !== sel.end.line || sel.start.ch !== sel.end.ch) {
+                var endState = this._codeMirror.getTokenAt(sel.end).state;
+                var endMode = endState.mode;
+                if (startMode !== endMode) {
+                    return null;
+                }
+            }
+            return startMode;
+            
+        } else {
+            &#x2F;&#x2F; Mode does not vary: just use the editor-wide mode
+            return this._codeMirror.getOption(&quot;mode&quot;);
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getRootElement</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the root DOM node of the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getRootElement = function () {
+        return this._codeMirror.getWrapperElement();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getScrollPos</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Returns the current scroll position of the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getScrollPos = function () {
+        return this._codeMirror.getScrollInfo();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getScrollerElement</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the scroller element from the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getScrollerElement = function () {
+        return this._codeMirror.getScrollerElement();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getSelectedText</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>@return {!string} The currently selected text, or "" if no selection. Includes \n if the<br />selection spans multiple lines (does NOT reflect the Document's line-endings style).</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getSelectedText = function () {
+        return this._codeMirror.getSelection();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>getSelection</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>Returns</dt>
+                                <dd>(<em>!start:line:number, </em>) - ch:number}, end:{line:number, ch:number}}}</dd>
+                            </dl>
+                            <p>Gets the current selection. Start is inclusive, end is exclusive. If there is no selection,<br />returns the current cursor position as both the start and end of the range (i.e. a selection<br />of length zero).</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.getSelection = function () {
+        var selStart = this._codeMirror.getCursor(true),
+            selEnd   = this._codeMirror.getCursor(false);
+        return { start: selStart, end: selEnd };
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>hasFocus</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Returns true if the editor has focus</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.hasFocus = function () {
+        return this._focused;
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>hasSelection</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>@return {boolean} True if there's a text selection; false if there's just an insertion point</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.hasSelection = function () {
+        return this._codeMirror.somethingSelected();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>indexFromPos</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>!line:number, </em>) - </dd>
+                                <dt>Returns</dt>
+                                <dd>(<em>number</em>) - </dd>
+                            </dl>
+                            <p>Given a position, returns its index within the text (assuming \n newlines)</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.indexFromPos = function (coords) {
+        return this._codeMirror.indexFromPos(coords);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>isFullyVisible</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Returns true if the editor is fully visible--i.e., is in the DOM, all ancestors are<br />visible, and has a non-zero width/height.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.isFullyVisible = function () {
+        return $(this.getRootElement()).is(&quot;:visible&quot;);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>lineCount</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Gets the total number of lines in the the document (includes lines not visible in the viewport)</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.lineCount = function () {
+        return this._codeMirror.lineCount();
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>posWithinRange</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>line:number, </em>) - pos</dd>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>line:number, </em>) - start</dd>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>line:number, </em>) - end</dd>
+                            </dl>
+                            <p>Returns true if pos is between start and end (inclusive at both ends)</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.posWithinRange = function (pos, start, end) {
+        var startIndex = this.indexFromPos(start),
+            endIndex = this.indexFromPos(end),
+            posIndex = this.indexFromPos(pos);
+
+        return posIndex &gt;= startIndex &amp;&amp; posIndex &lt;= endIndex;
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>refresh</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Re-renders the editor UI</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.refresh = function (handleResize) {
+        this._codeMirror.refresh();
+        if (handleResize) {
+            &#x2F;&#x2F; If the editor has been resized, the position of inline widgets relative to the
+            &#x2F;&#x2F; browser window might have changed.
+            this._fireWidgetOffsetTopChanged(0);
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>refreshAll</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Re-renders the editor, and all children inline editors.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.refreshAll = function () {
+        this.refresh();
+        this.getInlineWidgets().forEach(function (inlineWidget) {
+            inlineWidget.refresh();
+        });
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>removeAllInlineWidgets</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                            </dl>
+                            <p>Removes all inline widgets</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.removeAllInlineWidgets = function () {
+        &#x2F;&#x2F; copy the array because _removeInlineWidgetInternal will modifying the original
+        var widgets = [].concat(this.getInlineWidgets());
+        
+        widgets.forEach(function (widget) {
+            this.removeInlineWidget(widget);
+        }, this);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>removeInlineWidget</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>inlineWidget</dt>
+                                <dd>(<em>number</em>) - The widget to remove.</dd>
+                            </dl>
+                            <p>Removes the given inline widget.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.removeInlineWidget = function (inlineWidget) {
+        var lineNum = this._getInlineWidgetLineNumber(inlineWidget);
+        
+        &#x2F;&#x2F; _removeInlineWidgetInternal will get called from the destroy callback in CodeMirror.
+        this._codeMirror.removeInlineWidget(inlineWidget.id);
+        
+        &#x2F;&#x2F; once this widget is removed, notify all following inline widgets of a position change
+        this._fireWidgetOffsetTopChanged(lineNum);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>selectWordAt</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>!line:number, </em>) - </dd>
+                            </dl>
+                            <p>Selects word that the given pos lies within or adjacent to. If pos isn't touching a word<br />(e.g. within a token like "//"), moves the cursor to pos without selecting a range.<br />Adapted from selectWordAt() in CodeMirror v2.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.selectWordAt = function (pos) {
+        var line = this.document.getLine(pos.line),
+            start = pos.ch,
+            end = pos.ch;
+        
+        function isWordChar(ch) {
+            return (&#x2F;\w&#x2F;).test(ch) || ch.toUpperCase() !== ch.toLowerCase();
+        }
+        
+        while (start &gt; 0 &amp;&amp; isWordChar(line.charAt(start - 1))) {
+            --start;
+        }
+        while (end &lt; line.length &amp;&amp; isWordChar(line.charAt(end))) {
+            ++end;
+        }
+        this.setSelection({line: pos.line, ch: start}, {line: pos.line, ch: end});
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setCursorPos</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>line</dt>
+                                <dd>(<em>number</em>) - The 0 based line number.</dd>
+                                <dt>ch</dt>
+                                <dd>(<em>number=</em>) - The 0 based character position; treated as 0 if unspecified.</dd>
+                            </dl>
+                            <p>Sets the cursor position within the editor. Removes any selection.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setCursorPos = function (line, ch) {
+        this._codeMirror.setCursor(line, ch);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setInlineWidgetHeight</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>inlineWidget</dt>
+                                <dd>(<em>!InlineWidget</em>) - The widget whose height should be set.</dd>
+                                <dt>height</dt>
+                                <dd>(<em>!number</em>) - The height of the widget.</dd>
+                                <dt>ensureVisible</dt>
+                                <dd>(<em>boolean</em>) - Whether to scroll the entire widget into view.</dd>
+                            </dl>
+                            <p>Sets the height of an inline widget in this editor. </p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setInlineWidgetHeight = function (inlineWidget, height, ensureVisible) {
+        var info = this._codeMirror.getInlineWidgetInfo(inlineWidget.id),
+            oldHeight = (info &amp;&amp; info.height) || 0;
+        
+        this._codeMirror.setInlineWidgetHeight(inlineWidget.id, height, ensureVisible);
+        
+        &#x2F;&#x2F; update position for all following inline editors
+        if (oldHeight !== height) {
+            var lineNum = this._getInlineWidgetLineNumber(inlineWidget);
+            this._fireWidgetOffsetTopChanged(lineNum);
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setModeForDocument</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>mode</dt>
+                                <dd>(<em>string</em>) - Name of syntax highlighting mode.</dd>
+                            </dl>
+                            <p>Sets the syntax-highlighting mode for the document.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setModeForDocument = function (mode) {
+        this._codeMirror.setOption(&quot;mode&quot;, mode);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setScrollPos</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>x</dt>
+                                <dd>(<em>number</em>) - scrollLeft position in pixels</dd>
+                                <dt>y</dt>
+                                <dd>(<em>number</em>) - scrollTop position in pixels</dd>
+                            </dl>
+                            <p>Sets the current scroll position of the editor.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setScrollPos = function (x, y) {
+        this._codeMirror.scrollTo(x, y);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setSelection</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>!line:number, </em>) - start</dd>
+                                <dt>ch:number}}</dt>
+                                <dd>(<em>!line:number, </em>) - end</dd>
+                            </dl>
+                            <p>Sets the current selection. Start is inclusive, end is exclusive. Places the cursor at the<br />end of the selection range.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setSelection = function (start, end) {
+        this._codeMirror.setSelection(start, end);
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>setVisible</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>show</dt>
+                                <dd>(<em>boolean</em>) - true to show the editor, false to hide it</dd>
+                            </dl>
+                            <p>Shows or hides the editor within its parent. Does not force its ancestors to<br />become visible.</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.setVisible = function (show) {
+        $(this.getRootElement()).css(&quot;display&quot;, (show ? &quot;&quot; : &quot;none&quot;));
+        this._codeMirror.refresh();
+        if (show) {
+            this._inlineWidgets.forEach(function (inlineWidget) {
+                inlineWidget.onParentShown();
+            });
+        }
+    };</code></pre>
+                        </div>
+                        <div class="member">
+                            <span class="pull-right scope">
+                                
+                                
+                            </span>
+                            <h4>totalHeight</h4>
+                            <!--<strong>Params:</strong>-->
+                            <dl>
+                                <dt>includePadding</dt>
+                                <dd>(<em>!boolean</em>) - </dd>
+                            </dl>
+                            <p>Gets the total height of the document in pixels (not the viewport)</p>
+                            <button class="btn btn-small show-code">Show code</button>
+                            <pre class="code"><code>Editor.prototype.totalHeight = function (includePadding) {
+        return this._codeMirror.totalHeight(includePadding);
+    };</code></pre>
+                        </div>
+                    </section>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
