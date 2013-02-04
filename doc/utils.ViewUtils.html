@@ -285,9 +285,9 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>displayElement</dt>
-                            <dd>(<em>!DOMElement</em>) - the DOMElement that displays the shadow. Must fire</dd>
+                            <dd>(<em>!DOMElement</em>) - the DOMElement that displays the shadow. Must fire "contentChanged" events when the element is resized or repositioned.</dd>
                             <dt>scrollElement</dt>
-                            <dd>(<em>?Object</em>) - the object that is scrolled. Must fire "scroll" events</dd>
+                            <dd>(<em>?Object</em>) - the object that is scrolled. Must fire "scroll" events when the element is scrolled. If null, the displayElement is used.</dd>
                             <dt>showBottom</dt>
                             <dd>(<em>?boolean</em>) - optionally show the bottom shadow</dd>
                     </dl>

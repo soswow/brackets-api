@@ -520,13 +520,13 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>commandID</dt>
-                            <dd>(<em>!string</em>) - - valid command identifier used for the sort method.</dd>
-                            <dt>FileEntry)}</dt>
-                            <dd>(<em>!function(FileEntry, </em>) - compareFn - the function that will be used inside JavaScript's</dd>
+                            <dd>(<em>!string</em>) - - valid command identifier used for the sort method. Core commands in Brackets use a simple command title as an id, for example "open.file". Extensions should use the following format: "author.myextension.mycommandname". For example, "lschmitt.csswizard.format.css".</dd>
+                            <dt>compareFn</dt>
+                            <dd>(<em>!function(FileEntry, FileEntry)</em>) - - the function that will be used inside JavaScript's sort function. The return a value should be >0 (sort a to a lower index than b), =0 (leaves a and b unchanged with respect to each other) or <0 (sort b to a lower index than a) and must always returns the same value when given a specific pair of elements a and b as its two arguments. Documentation: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/sort</dd>
                             <dt>events</dt>
-                            <dd>(<em>?string</em>) - - one or more space-separated event types that DocumentManger uses.</dd>
+                            <dd>(<em>?string</em>) - - one or more space-separated event types that DocumentManger uses. Each event passed will trigger the automatic sort. If no events are passed, the automatic sort will be disabled for that sort method.</dd>
                             <dt>automaticFn</dt>
-                            <dd>(<em>?function($.Event)</em>) - - the function that will be called when an automatic sort</dd>
+                            <dd>(<em>?function($.Event)</em>) - - the function that will be called when an automatic sort event is triggered. If no function is passed the automatic sort will just call the sort function.</dd>
                             <dt>Returns</dt>
                             <dd>(<em>?Sort</em>) - </dd>
                     </dl>
@@ -595,8 +595,8 @@
                         <dl>
                             <dt>commandID</dt>
                             <dd>(<em>!string</em>) - - valid command identifier.</dd>
-                            <dt>FileEntry)}</dt>
-                            <dd>(<em>!function(FileEntry, </em>) - compareFn - a valid sort function (see register for a longer explanation).</dd>
+                            <dt>compareFn</dt>
+                            <dd>(<em>!function(FileEntry, FileEntry)</em>) - - a valid sort function (see register for a longer explanation).</dd>
                             <dt>events</dt>
                             <dd>(<em>!string</em>) - - space-separated DocumentManager possible events ending on ".sort".</dd>
                             <dt>automaticFn</dt>

@@ -375,8 +375,8 @@
                     <h4>addQuickOpenPlugin</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>name:</dt>
-                            <dd>(<em></em>) - string, </dd>
+                            <dt>pluginDef</dt>
+                            <dd>(<em> name: string, fileTypes:Array.&lt;string&gt;, done: function(), search: function(string):Array.&lt;SearchResult, string&gt;, match: function(string):boolean, itemFocus: function(?SearchResult, string), itemSelect: funciton(?SearchResult, string), resultsFormatter: ?function(SearchResult, string, string):string </em>) - Parameter Documentation: name - plug-in name fileTypes - file types array. Example: ["js", "css", "txt"]. An empty array indicates all file types. done - called when quick open is complete. Plug-in should clear its internal state. search - takes a query string and returns an array of strings that match the query. match - takes a query string and returns true if this plug-in wants to provide results for this query. itemFocus - performs an action when a result has been highlighted (via arrow keys, mouseover, etc.). The highlighted search result item (as returned by search()) is passed as an argument. itemSelect - performs an action when a result is chosen. The selected search result item (as returned by search()) is passed as an argument. resultFormatter - takes a query string and an item string and returns a <LI> item to insert into the displayed search results. If null, default is provided. If itemFocus() makes changes to the current document or cursor/scroll position and then the user cancels Quick Open (via Esc), those changes are automatically reverted.</dd>
                     </dl>
                     <p>Creates and registers a new QuickOpenPlugin</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -582,8 +582,8 @@
                             <dd>(<em>!string, SearchResult</em>) - </dd>
                             <dt>matchClass</dt>
                             <dd>(<em>?string</em>) - CSS class for highlighting matched text</dd>
-                            <dt>string):string}</dt>
-                            <dd>(<em>?function(number, </em>) - rangeFilter</dd>
+                            <dt>rangeFilter</dt>
+                            <dd>(<em>?function(number, string):string</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>!string</em>) - bolded, HTML-escaped result</dd>
                     </dl>
@@ -654,8 +654,8 @@
                     <dl>
                             <dt>searchResults</dt>
                             <dd>(<em>!Array.&lt;SearchResult&gt;</em>) - </dd>
-                            <dt>number&gt;}</dt>
-                            <dd>(<em>!Object.&lt;string, </em>) - fields</dd>
+                            <dt>fields</dt>
+                            <dd>(<em>!Object.&lt;string, number&gt;</em>) - </dd>
                     </dl>
                     <p>Sorts an array of SearchResult objects on a primary field, followed by secondary fields<br />in case of ties. 'fields' maps field name to priority, where 0 is the primary field. E.g.:<br />     multiFieldSort(bugList, { milestone: 0, severity: 1 });<br />Would sort a bug list by milestone, and within each milestone sort bugs by severity.</p>
 

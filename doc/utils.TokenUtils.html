@@ -180,10 +180,10 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>CodeMirror</em>) - </dd>
-                            <dt>line:{number}}</dt>
-                            <dd>(<em>ch:string, </em>) - pos</dd>
+                            <dt>pos</dt>
+                            <dd>(<em>{ch:{string}, line:{number}</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - pos:{ch:{string}, line:{number}}, token:{object}}</dd>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                     </dl>
                     <p>Creates a context object for the given editor and position, suitable for passing to the<br />move functions.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -203,8 +203,8 @@
                     <h4>moveNextToken</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} ctx</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>boolean</em>) - whether the context changed</dd>
                     </dl>
@@ -234,8 +234,8 @@
                     <h4>movePrevToken</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} ctx</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>boolean</em>) - whether the context changed</dd>
                     </dl>
@@ -266,8 +266,8 @@
                     <dl>
                             <dt>moveFxn</dt>
                             <dd>(<em>function</em>) - the funciton to move the context</dd>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} ctx</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>boolean</em>) - whether the context changed</dd>
                     </dl>
@@ -293,8 +293,8 @@
                     <h4>offsetInToken</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>number</em>) - </dd>
                     </dl>

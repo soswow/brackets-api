@@ -231,7 +231,7 @@
                             <dt>indexname</dt>
                             <dd>(<em>!string</em>) - </dd>
                             <dt>filterFunction</dt>
-                            <dd>(<em>function(!entry)</em>) - returns true to indicate the entry</dd>
+                            <dd>(<em>function({!entry})</em>) - returns true to indicate the entry should be included in the index</dd>
                     </dl>
                     <p>class FileIndex</p>
 
@@ -274,7 +274,7 @@
                             <dt>indexName</dt>
                             <dd>(<em>!string</em>) - must be unque</dd>
                             <dt>filterFunction</dt>
-                            <dd>(<em>!function(entry</em>) - should return true to include an</dd>
+                            <dd>(<em>!function({entry</em>) - should return true to include an entry in the index</dd>
                     </dl>
                     <p>Adds a new index to _indexList and marks the list dirty </p>
 
@@ -509,7 +509,7 @@
                             <dt></dt>
                             <dd>(<em>!string</em>) - </dd>
                             <dt>filterFunction</dt>
-                            <dd>(<em>function(string)</em>) - </dd>
+                            <dd>(<em>function({string})</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>$.Promise</em>) - a promise that is resolved with an Array of FileInfo's</dd>
                     </dl>

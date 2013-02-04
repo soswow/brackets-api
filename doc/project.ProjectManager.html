@@ -583,9 +583,9 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>rootPath</dt>
-                            <dd>(<em>string</em>) - Absolute path to the root folder of the project. </dd>
+                            <dd>(<em>string</em>) - Absolute path to the root folder of the project. If rootPath is undefined or null, the last open project will be restored.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved when the</dd>
+                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved when the project is loaded and tree is rendered, or rejected if the project path fails to load.</dd>
                     </dl>
                     <p>Loads the given folder as a project. Normally, you would call openProject() instead to let the<br />user choose a folder.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1068,7 +1068,7 @@
                             <dt>{boolean}</dt>
                             <dd>(<em>isFolder</em>) - If true, create a folder instead of a file</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved with the FileEntry</dd>
+                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved with the FileEntry of the created object, or rejected if the user cancelled or entered an illegal filename.</dd>
                     </dl>
                     <p>Create a new item in the project tree.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1443,9 +1443,9 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>path</dt>
-                            <dd>(<em>string=</em>) - Optional absolute path to the root folder of the project. </dd>
+                            <dd>(<em>string=</em>) - Optional absolute path to the root folder of the project. If path is undefined or null, displays a dialog where the user can choose a folder to load. If the user cancels the dialog, nothing more happens.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved when the</dd>
+                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved when the project is loaded and tree is rendered, or rejected if the project path fails to load.</dd>
                     </dl>
                     <p>Open a new project. Currently, Brackets must always have a project open, so<br />this method handles both closing the current project and opening a new project.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1505,7 +1505,7 @@
                             <dt>isFolder</dt>
                             <dd>(<em>boolean</em>) - True if item is a folder; False if it is a file.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved or rejected when</dd>
+                            <dd>(<em>$.Promise</em>) - A promise object that will be resolved or rejected when the rename is finished.</dd>
                     </dl>
                     <p>Rename a file/folder. This will update the project tree data structures<br />and send notifications about the rename.</p>
                     <button class="btn btn-small show-code">Show code</button>

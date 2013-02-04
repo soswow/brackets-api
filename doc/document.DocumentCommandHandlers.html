@@ -346,7 +346,7 @@
                             <dt>fullPath</dt>
                             <dd>(<em>?string</em>) - - The path of the file to open; if it's null we'll prompt for it</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a new </dd>
+                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a new document for the specified file path, or rejected if the file can not be read.</dd>
                     </dl>
                     <p>Creates a document and displays an editor for the specified file path. <br />If no path is specified, a file prompt is provided for input.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -413,7 +413,7 @@
                             <dt>isFolder</dt>
                             <dd>(<em>boolean</em>) - True if the suggestion is for a folder name</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a unique name starting with </dd>
+                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a unique name starting with the given base name</dd>
                     </dl>
                     <p>Ensures the suggested file name doesn't already exit.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -590,7 +590,7 @@
                             <dt>fullPath</dt>
                             <dd>(<em>!string</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a</dd>
+                            <dd>(<em>$.Promise</em>) - a jQuery promise that will be resolved with a document for the specified file path, or rejected if the file can not be read.</dd>
                     </dl>
                     <p>Creates a document and displays an editor for the specified file path.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -636,7 +636,7 @@
                             <dt>doc</dt>
                             <dd>(<em>Document</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a Promise that's resolved when done, or rejected with a NativeFileError if the</dd>
+                            <dd>(<em>$.Promise</em>) - a Promise that's resolved when done, or rejected with a NativeFileError if the file cannot be read (after showing an error dialog to the user).</dd>
                     </dl>
                     <p>Reverts the Document to the current contents of its file on disk. Discards any unsaved changes<br />in the Document.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -795,7 +795,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>Params</dt>
-                            <dd>(<em>!fullPath:string</em>) - for FILE_OPEN command</dd>
+                            <dd>(<em>!{fullPath:string}</em>) - for FILE_OPEN command</dd>
                     </dl>
                     <p>Opens the given file, makes it the current document, AND adds it to the working set.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -814,10 +814,10 @@
                     <h4>handleFileClose</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>FileEntry,</dt>
-                            <dd>(<em>?file:</em>) - promptOnly:boolean}} commandData Optional bag of arguments:</dd>
+                            <dt>commandData</dt>
+                            <dd>(<em>?{file: FileEntry, promptOnly:boolean}</em>) - Optional bag of arguments: file - File to close; assumes the current document if not specified. promptOnly - If true, only displays the relevant confirmation UI and does NOT actually close the document. This is useful when chaining file-close together with other user prompts that may be cancelable.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a promise that is resolved when the file is closed, or if no file is open.</dd>
+                            <dd>(<em>$.Promise</em>) - a promise that is resolved when the file is closed, or if no file is open. FUTURE: should we reject the promise if no file is open?</dd>
                     </dl>
                     <p>Closes the specified file: removes it from the working set, and closes the main editor if one<br />is open. Prompts user about saving changes first, if document is dirty.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -911,8 +911,8 @@
                     <h4>handleFileCloseAll</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>boolean}}</dt>
-                            <dd>(<em>?promptOnly:</em>) - If true, only displays the relevant confirmation UI and does NOT</dd>
+                            <dt>If</dt>
+                            <dd>(<em>?{promptOnly: boolean}</em>) - true, only displays the relevant confirmation UI and does NOT actually close any documents. This is useful when chaining close-all together with other user prompts that may be cancelable.</dd>
                             <dt>Returns</dt>
                             <dd>(<em>$.Promise</em>) - a promise that is resolved when all files are closed</dd>
                     </dl>
@@ -1041,7 +1041,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>Params</dt>
-                            <dd>(<em>!fullPath:string</em>) - for FILE_OPEN command</dd>
+                            <dd>(<em>!{fullPath:string}</em>) - for FILE_OPEN command</dd>
                     </dl>
                     <p>Opens the given file and makes it the current document. Does NOT add it to the working set.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1128,8 +1128,8 @@
                     <h4>handleFileSave</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>Document}}</dt>
-                            <dd>(<em>?doc:</em>) - commandData Document to close, or null</dd>
+                            <dt>commandData</dt>
+                            <dd>(<em>?{doc: Document}</em>) - Document to close, or null</dd>
                             <dt>Returns</dt>
                             <dd>(<em>$.Promise</em>) - a promise that is resolved after the save completes</dd>
                     </dl>
@@ -1164,7 +1164,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a promise that is resolved once ALL the saves have been completed; or rejected</dd>
+                            <dd>(<em>$.Promise</em>) - a promise that is resolved once ALL the saves have been completed; or rejected after all operations completed if any ONE of them failed.</dd>
                     </dl>
                     <p>Saves all unsaved documents.</p>
                     <button class="btn btn-small show-code">Show code</button>

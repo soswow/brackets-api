@@ -232,14 +232,14 @@
                     <h4>_findCommentEnd</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>!editor:CodeMirror, </em>) - line:{number}}, token:{object}}} ctx - token context</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>!{editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}}</em>) - - token context</dd>
                             <dt>suffixExp</dt>
                             <dd>(<em>!RegExp</em>) - - a valid regular expression</dd>
                             <dt>suffixLen</dt>
                             <dd>(<em>!number</em>) - - length of the suffix</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>?line:</em>) - number, ch: number}}</dd>
+                            <dd>(<em>?{line: number, ch: number}</em>) - </dd>
                     </dl>
                     <p>Moves the token context to the token that ends the block-comment. Ctx starts in a block-comment.<br />Returns the position of the sufix or null if gets to the end of the document and didn't found it.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -260,12 +260,12 @@
                     <h4>_findCommentStart</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>!editor:CodeMirror, </em>) - line:{number}}, token:{object}}} ctx - token context</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>!{editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}}</em>) - - token context</dd>
                             <dt>prefixExp</dt>
                             <dd>(<em>!RegExp</em>) - - a valid regular expression</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>?line:</em>) - number, ch: number}}</dd>
+                            <dd>(<em>?{line: number, ch: number}</em>) - </dd>
                     </dl>
                     <p>Moves the token context to the token that starts the block-comment. Ctx starts in a block-comment.<br />Returns the position of the prefix or null if gets to the start of the document and didn't found it.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -286,10 +286,10 @@
                     <h4>_findNextBlockComment</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>!editor:CodeMirror, </em>) - line:{number}}, token:{object}}} ctx - token context</dd>
-                            <dt>number,</dt>
-                            <dd>(<em>!line:</em>) - ch: number}} end - where to stop searching</dd>
+                            <dt>ctx</dt>
+                            <dd>(<em>!{editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}}</em>) - - token context</dd>
+                            <dt>end</dt>
+                            <dd>(<em>!{line: number, ch: number}</em>) - - where to stop searching</dd>
                             <dt>prefixExp</dt>
                             <dd>(<em>!RegExp</em>) - - a valid regular expression</dd>
                             <dt>Returns</dt>

@@ -271,10 +271,10 @@
                     <h4>_getProvidersForMode</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>string&gt;)}</dt>
-                            <dd>(<em>(string, Object&lt;name:</em>) - mode</dd>
+                            <dt>mode</dt>
+                            <dd>(<em>(string, Object&lt;name: string&gt;)</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>Array.&lt;provider:</em>) - Object, modes: Array.<string>, priority: number}>}</dd>
+                            <dd>(<em>Array.&lt;{provider: Object, modes: Array.&lt;string&gt;, priority: number}&gt;</em>) - </dd>
                     </dl>
                     <p>Return the array of hint providers for the given mode.<br /> This gets called (potentially) on every keypress. So, it should be fast.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -454,11 +454,11 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>provider</dt>
-                            <dd>(<em>CodeHintProvider</em>) - </dd>
-                            <dt>string&gt;)]}</dt>
-                            <dd>(<em>Array[(string, Object&lt;name:</em>) - modes</dd>
+                            <dd>(<em>CodeHintProvider</em>) - The hint provider to be registered, described below. </dd>
+                            <dt>modes</dt>
+                            <dd>(<em>Array[(string, Object&lt;name: string&gt;)]</em>) - The set of mode names for which the provider is capable of providing hints. If the special mode name "all" is included then the provider may be called upon to provide hints for any mode. </dd>
                             <dt>priority</dt>
-                            <dd>(<em>Integer</em>) - </dd>
+                            <dd>(<em>Integer</em>) - A non-negative number used to break ties among hint providers for a particular mode. Providers that register with a higher priority will have the opportunity to provide hints at a given mode before those with a lower priority. Brackets default providers have priority zero.</dd>
                     </dl>
                     <p>The method by which a CodeHintProvider registers its willingness to<br />providing hints for editors in a given mode.</p>
                     <button class="btn btn-small show-code">Show code</button>

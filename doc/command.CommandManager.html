@@ -316,9 +316,9 @@
                             <dt>name</dt>
                             <dd>(<em>string</em>) - - text that will be displayed in the UI to represent command</dd>
                             <dt>id</dt>
-                            <dd>(<em>string</em>) - - unique identifier for command.</dd>
+                            <dd>(<em>string</em>) - - unique identifier for command. Core commands in Brackets use a simple command title as an id, for example "open.file". Extensions should use the following format: "author.myextension.mycommandname". For example, "lschmitt.csswizard.format.css".</dd>
                             <dt>commandFn</dt>
-                            <dd>(<em>function(...)</em>) - - the function to call when the command is executed. Any arguments passed to</dd>
+                            <dd>(<em>function(...)</em>) - - the function to call when the command is executed. Any arguments passed to execute() (after the id) are passed as arguments to the function. If the function is asynchronous, it must return a jQuery promise that is resolved when the command completes. Otherwise, the CommandManager will assume it is synchronous, and return a promise that is already resolved.</dd>
                             <dt>Returns</dt>
                             <dd>(<em>?Command</em>) - </dd>
                     </dl>
@@ -359,7 +359,7 @@
                             <dt>id</dt>
                             <dd>(<em>string</em>) - </dd>
                             <dt>commandFn</dt>
-                            <dd>(<em>function</em>) - - the function that is called when the command is executed.</dd>
+                            <dd>(<em>function</em>) - - the function that is called when the command is executed. TODO: where should this be triggered, The Command or Exports? Events: enabledStateChange checkedStateChange keyBindingAdded keyBindingRemoved</dd>
                         </dl>
                         <p></p>
                         <button class="btn btn-small show-code">Show code</button>

@@ -281,7 +281,7 @@
                     <h4>contextMenuMap</h4>
                     <dl>
                             <dt>Type</dt>
-                                <dd>Object.<string, </dd>
+                                <dd>Object.<string, ContextMenu></dd>
                     </dl>
                     <p>Maps contextMenuID's to ContextMenu objects</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -296,7 +296,7 @@
                     <h4>menuItemMap</h4>
                     <dl>
                             <dt>Type</dt>
-                                <dd>Object.<string, </dd>
+                                <dd>Object.<string, MenuItem></dd>
                     </dl>
                     <p>Maps menuItemID's to MenuItem objects</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -311,7 +311,7 @@
                     <h4>menuMap</h4>
                     <dl>
                             <dt>Type</dt>
-                                <dd>Object.<string, </dd>
+                                <dd>Object.<string, Menu></dd>
                     </dl>
                     <p>Maps menuID's to Menu objects</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -378,11 +378,11 @@
                             <dt>name</dt>
                             <dd>(<em>!string</em>) - - display text for menu </dd>
                             <dt>id</dt>
-                            <dd>(<em>!string</em>) - - unique identifier for a menu.</dd>
+                            <dd>(<em>!string</em>) - - unique identifier for a menu. Core Menus in Brackets use a simple title as an id, for example "file-menu". Extensions should use the following format: "author.myextension.mymenuname". </dd>
                             <dt>position</dt>
-                            <dd>(<em>?string</em>) - - constant defining the position of new the Menu relative</dd>
+                            <dd>(<em>?string</em>) - - constant defining the position of new the Menu relative to other Menus. Default is LAST (see Insertion position constants). </dd>
                             <dt>relativeID</dt>
-                            <dd>(<em>?string</em>) - - id of Menu the new Menu will be positioned relative to. Required</dd>
+                            <dd>(<em>?string</em>) - - id of Menu the new Menu will be positioned relative to. Required when position is AFTER or BEFORE, ignored when position is FIRST or LAST </dd>
                             <dt>Returns</dt>
                             <dd>(<em>?Menu</em>) - the newly created Menu</dd>
                     </dl>
@@ -576,7 +576,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>id</dt>
-                            <dd>(<em>string</em>) - - unique identifier for context menu.</dd>
+                            <dd>(<em>string</em>) - - unique identifier for context menu. Core context menus in Brackets use a simple title as an id. Extensions should use the following format: "author.myextension.mycontextmenu name"</dd>
                             <dt>Returns</dt>
                             <dd>(<em>?ContextMenu</em>) - the newly created context menu</dd>
                     </dl>
@@ -620,7 +620,7 @@
                             <dt>id</dt>
                             <dd>(<em>string</em>) - </dd>
                             <dt>command</dt>
-                            <dd>(<em>string, Command</em>) - - the Command this MenuItem will reflect.</dd>
+                            <dd>(<em>string, Command</em>) - - the Command this MenuItem will reflect. Use DIVIDER to specify a menu divider</dd>
                         </dl>
                         <p></p>
                         <button class="btn btn-small show-code">Show code</button>
@@ -933,9 +933,9 @@
                             <!--<strong>Params:</strong>-->
                             <dl>
                                 <dt>position</dt>
-                                <dd>(<em>?string</em>) - - constant defining the position of new the divider relative</dd>
+                                <dd>(<em>?string</em>) - - constant defining the position of new the divider relative to other MenuItems. Default is LAST. (see Insertion position constants). </dd>
                                 <dt>relativeID</dt>
-                                <dd>(<em>?string</em>) - - id of menuItem, sub-menu, or menu section that the new </dd>
+                                <dd>(<em>?string</em>) - - id of menuItem, sub-menu, or menu section that the new divider will be positioned relative to. Required for all position constants except FIRST and LAST </dd>
                                 <dt>Returns</dt>
                                 <dd>(<em>MenuItem</em>) - the newly created divider</dd>
                             </dl>
@@ -953,14 +953,14 @@
                             <h4>addMenuItem</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>|</dt>
-                                <dd>(<em>!string</em>) - Command} command - the command the menu will execute.</dd>
-                                <dt>|</dt>
-                                <dd>(<em>?string</em>) - Array.<{key: string, platform: string}>} keyBindings - register one</dd>
+                                <dt>command</dt>
+                                <dd>(<em>!string, Command</em>) - - the command the menu will execute. Pass Menus.DIVIDER for a menu divider, or just call addMenuDivider() instead.</dd>
+                                <dt>keyBindings</dt>
+                                <dd>(<em>?string, Array.&lt;{key: string, platform: string}&gt;</em>) - - register one one or more key bindings to associate with the supplied command.</dd>
                                 <dt>position</dt>
-                                <dd>(<em>?string</em>) - - constant defining the position of new MenuItem relative to</dd>
+                                <dd>(<em>?string</em>) - - constant defining the position of new MenuItem relative to other MenuItems. Values: - With no relativeID, use Menus.FIRST or LAST (default is LAST) - Relative to a command id, use BEFORE or AFTER (required) - Relative to a MenuSection, use FIRST_IN_SECTION or LAST_IN_SECTION (required)</dd>
                                 <dt>relativeID</dt>
-                                <dd>(<em>?string</em>) - - command id OR one of the MenuSection.* constants. Required</dd>
+                                <dd>(<em>?string</em>) - - command id OR one of the MenuSection.* constants. Required for all position constants except FIRST and LAST. </dd>
                                 <dt>Returns</dt>
                                 <dd>(<em>MenuItem</em>) - the newly created MenuItem</dd>
                             </dl>
@@ -1060,8 +1060,8 @@
                             <h4>removeMenuItem</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>|</dt>
-                                <dd>(<em>!string</em>) - Command} command - command the menu would execute if we weren't deleting it.</dd>
+                                <dt>command</dt>
+                                <dd>(<em>!string, Command</em>) - - command the menu would execute if we weren't deleting it.</dd>
                             </dl>
                             <p>Removes the specified menu item from this Menu. Key bindings are unaffected; use KeyBindingManager<br />directly to remove key bindings if desired.</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1161,8 +1161,8 @@
                             <h4>open</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>|</dt>
-                                <dd>(<em>MouseEvent</em>) - {pageX:number, pageY:number}} mouseOrLocation - pass a MouseEvent</dd>
+                                <dt>mouseOrLocation</dt>
+                                <dd>(<em>MouseEvent, {pageX:number, pageY:number}</em>) - - pass a MouseEvent to display the menu near the mouse or pass in an object with page x/y coordinates for a specific location.</dd>
                             </dl>
                             <p>Displays the ContextMenu at the specified location and dispatches the <br />"beforeContextMenuOpen" event.The menu location may be adjusted to prevent<br />clipping by the browser window. All other menus and ContextMenus will be closed<br />bofore a new menu is shown.</p>
                             <button class="btn btn-small show-code">Show code</button>

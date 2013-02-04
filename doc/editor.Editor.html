@@ -462,15 +462,15 @@
                             <dt>document</dt>
                             <dd>(<em>!Document</em>) - </dd>
                             <dt>makeMasterEditor</dt>
-                            <dd>(<em>!boolean</em>) - If true, this Editor will set itself as the (secret) "master"</dd>
+                            <dd>(<em>!boolean</em>) - If true, this Editor will set itself as the (secret) "master" Editor for the Document. If false, this Editor will attach to the Document as a "slave"/ secondary editor.</dd>
                             <dt>mode</dt>
-                            <dd>(<em>!string</em>) - Syntax-highlighting language mode; "" means plain-text mode.</dd>
+                            <dd>(<em>!string</em>) - Syntax-highlighting language mode; "" means plain-text mode. See {@link EditorUtils#getModeFromFileExtension()}.</dd>
                             <dt>container</dt>
                             <dd>(<em>!jQueryObject</em>) - Container to add the editor to.</dd>
-                            <dt>function(Editor)&gt;}</dt>
-                            <dd>(<em>!Object&lt;string, </em>) - additionalKeys Mapping of keyboard shortcuts to</dd>
-                            <dt>number,</dt>
-                            <dd>(<em>startLine:</em>) - endLine: number}=} range If specified, range of lines within the document</dd>
+                            <dt>additionalKeys</dt>
+                            <dd>(<em>!Object&lt;string, function(Editor)&gt;</em>) - Mapping of keyboard shortcuts to custom handler functions. Mapping is in CodeMirror format</dd>
+                            <dt>range</dt>
+                            <dd>(<em>{startLine: number, endLine: number}=</em>) - If specified, range of lines within the document to display in this editor. Inclusive.</dd>
                         </dl>
                         <p></p>
 
@@ -648,7 +648,7 @@
                             <h4>_inlineWidgets</h4>
                             <dl>
                                 <dt>Type</dt>
-                                <dd>!Array.<id:number, </dd>
+                                <dd>!Array.<{id:number, data:Object}></dd>
                                 <dt>Private</dt>
                             </dl>
                             <p></p>
@@ -1068,8 +1068,8 @@
                             <h4>addInlineWidget</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>!line:number, </em>) - pos Position in text to anchor the inline.</dd>
+                                <dt>pos</dt>
+                                <dd>(<em>!{line:number, ch:number}</em>) - Position in text to anchor the inline.</dd>
                                 <dt>inlineWidget</dt>
                                 <dd>(<em>!InlineWidget</em>) - The widget to add.</dd>
                             </dl>
@@ -1151,9 +1151,9 @@
                             <!--<strong>Params:</strong>-->
                             <dl>
                                 <dt>expandTabs</dt>
-                                <dd>(<em>boolean</em>) - If true, return the actual visual column number instead of the character offset in</dd>
+                                <dd>(<em>boolean</em>) - If true, return the actual visual column number instead of the character offset in the "ch" property.</dd>
                                 <dt>Returns</dt>
-                                <dd>(<em>!line:number, </em>) - ch:number}</dd>
+                                <dd>(<em>!{line:number, </em>) - ch:number}</dd>
                             </dl>
                             <p>Gets the current cursor position within the editor. If there is a selection, returns whichever<br />end of the range the cursor lies at.</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1204,7 +1204,7 @@
                             <!--<strong>Params:</strong>-->
                             <dl>
                                 <dt>Returns</dt>
-                                <dd>(<em>!Array.&lt;id:number, </em>) - data:Object}>}</dd>
+                                <dd>(<em>!Array.&lt;{id:number, data:Object}&gt;</em>) - </dd>
                             </dl>
                             <p>Returns a list of all inline widgets currently open in this editor. Each entry contains the<br />inline's id, and the data parameter that was passed to addInlineWidget().</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1355,7 +1355,7 @@
                             <!--<strong>Params:</strong>-->
                             <dl>
                                 <dt>Returns</dt>
-                                <dd>(<em>!start:line:number, </em>) - ch:number}, end:{line:number, ch:number}}}</dd>
+                                <dd>(<em>!{start:{line:number, ch:number}, end:{line:number, ch:number}}</em>) - </dd>
                             </dl>
                             <p>Gets the current selection. Start is inclusive, end is exclusive. If there is no selection,<br />returns the current cursor position as both the start and end of the range (i.e. a selection<br />of length zero).</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1403,8 +1403,8 @@
                             <h4>indexFromPos</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>!line:number, </em>) - </dd>
+                                <dt></dt>
+                                <dd>(<em>!{line:number, ch:number}</em>) - </dd>
                                 <dt>Returns</dt>
                                 <dd>(<em>number</em>) - </dd>
                             </dl>
@@ -1452,12 +1452,12 @@
                             <h4>posWithinRange</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>line:number, </em>) - pos</dd>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>line:number, </em>) - start</dd>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>line:number, </em>) - end</dd>
+                                <dt>pos</dt>
+                                <dd>(<em>{line:number, ch:number}</em>) - </dd>
+                                <dt>start</dt>
+                                <dd>(<em>{line:number, ch:number}</em>) - </dd>
+                                <dt>end</dt>
+                                <dd>(<em>{line:number, ch:number}</em>) - </dd>
                             </dl>
                             <p>Returns true if pos is between start and end (inclusive at both ends)</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1558,8 +1558,8 @@
                             <h4>selectWordAt</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>!line:number, </em>) - </dd>
+                                <dt></dt>
+                                <dd>(<em>!{line:number, ch:number}</em>) - </dd>
                             </dl>
                             <p>Selects word that the given pos lies within or adjacent to. If pos isn't touching a word<br />(e.g. within a token like "//"), moves the cursor to pos without selecting a range.<br />Adapted from selectWordAt() in CodeMirror v2.</p>
                             <button class="btn btn-small show-code">Show code</button>
@@ -1674,10 +1674,10 @@
                             <h4>setSelection</h4>
                             <!--<strong>Params:</strong>-->
                             <dl>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>!line:number, </em>) - start</dd>
-                                <dt>ch:number}}</dt>
-                                <dd>(<em>!line:number, </em>) - end</dd>
+                                <dt>start</dt>
+                                <dd>(<em>!{line:number, ch:number}</em>) - </dd>
+                                <dt>end</dt>
+                                <dd>(<em>!{line:number, ch:number}</em>) - </dd>
                             </dl>
                             <p>Sets the current selection. Start is inclusive, end is exclusive. Places the cursor at the<br />end of the selection range.</p>
                             <button class="btn btn-small show-code">Show code</button>

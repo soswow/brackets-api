@@ -185,14 +185,14 @@
                     <h4>_addSelectorsToResults</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>lineStart:number,</dt>
-                            <dd>(<em>Array.&lt;document:Document, </em>) - lineEnd:number}>} resultSelectors</dd>
-                            <dt>declListEndLine:number,</dt>
-                            <dd>(<em>Array.&lt;selectorGroupStartLine:number, </em>) - selector:string}>} selectorsToAdd</dd>
+                            <dt>resultSelectors</dt>
+                            <dd>(<em>Array.&lt;{document:Document, lineStart:number, lineEnd:number}&gt;</em>) - </dd>
+                            <dt>selectorsToAdd</dt>
+                            <dd>(<em>Array.&lt;{selectorGroupStartLine:number, declListEndLine:number, selector:string}&gt;</em>) - </dd>
                             <dt>sourceDoc</dt>
                             <dd>(<em>!Document</em>) - </dd>
                             <dt>lineOffset</dt>
-                            <dd>(<em>!number</em>) - Amount to offset all line number info by. Used if the first line</dd>
+                            <dd>(<em>!number</em>) - Amount to offset all line number info by. Used if the first line of the parsed CSS text is not the first line of the sourceDoc.</dd>
                     </dl>
                     <p>Converts the results of _findAllMatchingSelectorsInText() into a simpler bag of data and<br />appends those new objects to the given 'resultSelectors' Array.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -220,7 +220,7 @@
                             <dt>{!String}</dt>
                             <dd>(<em>selector</em>) - selector to search for</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>Array.&lt;selectorGroupStartLine:number, </em>) - declListEndLine:number, selector:string}>}</dd>
+                            <dd>(<em>Array.&lt;{selectorGroupStartLine:number, declListEndLine:number, selector:string}&gt;</em>) - Array of objects containing the start and end line numbers (0-based, inclusive range) for each matched selector.</dd>
                     </dl>
                     <p>Finds all instances of the specified selector in "text".<br />Returns an Array of Objects with start and end properties.</p>
 
@@ -346,10 +346,10 @@
                     <h4>_getPrecedingPropValues</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>?Array.&lt;string&gt;</em>) - An array of all the space/comma seperated tokens before the</dd>
+                            <dd>(<em>?Array.&lt;string&gt;</em>) - An array of all the space/comma seperated tokens before the current cursor position</dd>
                     </dl>
                     <p>Gets all of the space/comma seperated tokens before the the current cursor position.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -400,8 +400,8 @@
                     <h4>_getPropNameStartingFromPropValue</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>string</em>) - the property name of the current rule.</dd>
                     </dl>
@@ -433,12 +433,12 @@
                     <h4>_getRuleInfoStartingFromPropValue</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>editor</dt>
                             <dd>(<em>!Editor</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>context:</em>) - string,</dd>
+                            <dd>(<em>{context: string, offset: number, name: string, index: number, values: Array.&lt;string&gt;, isNewItem: boolean}</em>) - A CSS context info object.</dd>
                     </dl>
                     <p>Returns a context info object for the current CSS rule</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -523,12 +523,12 @@
                     <h4>_getSucceedingPropValues</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>currentValue</dt>
                             <dd>(<em>string</em>) - The token string at the current cursor position</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>?Array.&lt;string&gt;</em>) - An array of all the space/comma seperated tokens after the</dd>
+                            <dd>(<em>?Array.&lt;string&gt;</em>) - An array of all the space/comma seperated tokens after the current cursor position</dd>
                     </dl>
                     <p>Gets all of the space/comma seperated tokens after the the current cursor position.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -582,8 +582,8 @@
                     <h4>_isInPropName</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>boolean</em>) - true if the context is in property name</dd>
                     </dl>
@@ -616,8 +616,8 @@
                     <h4>_isInPropValue</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>boolean</em>) - true if the context is in property value</dd>
                     </dl>
@@ -657,9 +657,9 @@
                             <dt>values</dt>
                             <dd>(<em>Array.&lt;string&gt;=</em>) - An array of property values </dd>
                             <dt>isNewItem</dt>
-                            <dd>(<em>boolean=</em>) - If this is true, then the value in index refers to the index at which a new item </dd>
+                            <dd>(<em>boolean=</em>) - If this is true, then the value in index refers to the index at which a new item is going to be inserted and should not be used for accessing an existing value in values array. </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>context:</em>) - string,</dd>
+                            <dd>(<em>{context: string, offset: number, name: string, index: number, values: Array.&lt;string&gt;, isNewItem: boolean}</em>) - A CSS context info object.</dd>
                     </dl>
                     <p>Creates a context info object</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1023,7 +1023,7 @@
                             <dt>htmlDocument</dt>
                             <dd>(<em>?Document</em>) - An HTML file for context (so we can search <style> blocks)</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - that will be resolved with an Array of objects containing the</dd>
+                            <dd>(<em>$.Promise</em>) - that will be resolved with an Array of objects containing the source document, start line, and end line (0-based, inclusive range) for each matching declaration list. Does not addRef() the documents returned in the array.</dd>
                     </dl>
                     <p>Return all rules matching the specified selector.<br />For Sprint 4, we only look at the rightmost simple selector. For example, searching for ".foo" will <br />match these rules:<br /> .foo {}<br /> div .foo {}<br /> div.foo {}<br /> div .foo[bar="42"] {}<br /> div .foo:hovered {}<br /> div .foo::first-child<br />but will <em>not</em> match these rules:<br /> .foobar {}<br /> .foo .bar {}<br /> div .foo .bar {}<br /> .foo.bar {}</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1059,10 +1059,10 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>!Editor</em>) - Editor to search</dd>
-                            <dt>number,</dt>
-                            <dd>(<em>!line:</em>) - ch: number}} pos Position to search</dd>
+                            <dt>pos</dt>
+                            <dd>(<em>!{line: number, ch: number}</em>) - Position to search</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>string</em>) - Selector(s) for the rule at the specified position, or "" if the position</dd>
+                            <dd>(<em>string</em>) - Selector(s) for the rule at the specified position, or "" if the position is not within a style rule. If the rule has multiple selectors, a comma-separated selector string is returned.</dd>
                     </dl>
                     <p>Returns the selector(s) of the rule at the specified document pos, or "" if the position is <br />is not within a style rule.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -1185,10 +1185,10 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>!Editor</em>) - </dd>
-                            <dt>number,</dt>
-                            <dd>(<em>ch:</em>) - line: number}} constPos A CM pos (likely from editor.getCursor())</dd>
+                            <dt>constPos</dt>
+                            <dd>(<em>{ch: number, line: number}</em>) - A CM pos (likely from editor.getCursor())</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>context:</em>) - string,</dd>
+                            <dd>(<em>{context: string, offset: number, name: string, index: number, values: Array.&lt;string&gt;, isNewItem: boolean}</em>) - A CSS context info object.</dd>
                     </dl>
                     <p>Returns a context info object for the given cursor position</p>
                     <button class="btn btn-small show-code">Show code</button>

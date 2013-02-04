@@ -179,10 +179,10 @@
                     <h4>_extractAttrVal</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em></em>) - val:{string}, offset:{number}}</dd>
+                            <dd>(<em> val:{string}, offset:{number}</em>) - </dd>
                     </dl>
                     <p>Sometimes as attr values are getting typed, if the quotes aren't balanced yet<br />some extra 'non attribute value' text gets included in the token. This attempts<br />to assure the attribute value we grab is always good</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -245,8 +245,8 @@
                     <h4>_extractTagName</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>string</em>) - </dd>
                     </dl>
@@ -272,8 +272,8 @@
                     <h4>_getTagInfoStartingFromAttrName</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>isPriorAttr</dt>
                             <dd>(<em>boolean</em>) - indicates whether we're getting info for a prior attribute</dd>
                             <dt>Returns</dt>
@@ -324,8 +324,8 @@
                     <h4>_getTagInfoStartingFromAttrValue</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>pos:{ch:{string},</dt>
-                            <dd>(<em>editor:CodeMirror, </em>) - line:{number}}, token:{object}} context</dd>
+                            <dt>context</dt>
+                            <dd>(<em>editor:{CodeMirror}, pos:{ch:{string}, line:{number}}, token:{object}</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>string</em>) - </dd>
                     </dl>
@@ -389,7 +389,7 @@
                             <dt>attrValue</dt>
                             <dd>(<em>string=</em>) - The value of the attribute</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>tagName:string, </em>) - </dd>
+                            <dd>(<em>{tagName:string, attr:{name:string, value:string, valueAssigned:boolean, quoteChar:string, hasEndQuote:boolean}, position:{tokenType:string, offset:number</em>) - }} A tagInfo object with some context about the current tag hint.</dd>
                     </dl>
                     <p>Creates a tagInfo object and assures all the values are entered or are empty strings</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -417,7 +417,7 @@
                             <dt>editor</dt>
                             <dd>(<em>!Editor</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>Array.&lt;start:line:number, </em>) - ch:number}, end:{line:number, ch:number}, text:string}>}</dd>
+                            <dd>(<em>Array.&lt;{start:{line:number, ch:number}, end:{line:number, ch:number}, text:string}&gt;</em>) - </dd>
                     </dl>
                     <p>Returns an Array of info about all <style> blocks in the given Editor's HTML document (assumes<br />the Editor contains HTML text).</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -479,8 +479,8 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>CodeMirror</em>) - An instance of a CodeMirror editor</dd>
-                            <dt>line:{number}}</dt>
-                            <dd>(<em>ch:string, </em>) - pos A CodeMirror position</dd>
+                            <dt>pos</dt>
+                            <dd>(<em>ch:{string}, line:{number}</em>) - A CodeMirror position</dd>
                             <dt>Returns</dt>
                             <dd>(<em>Array.&lt;string&gt;</em>) - A list of the used attributes inside the current tag</dd>
                     </dl>
@@ -534,10 +534,10 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>Editor</em>) - An instance of a Brackets editor</dd>
-                            <dt>number,</dt>
-                            <dd>(<em>ch:</em>) - line: number}} constPos A CM pos (likely from editor.getCursor())</dd>
+                            <dt>constPos</dt>
+                            <dd>(<em>{ch: number, line: number}</em>) - A CM pos (likely from editor.getCursor())</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>tagName:string, </em>) - </dd>
+                            <dd>(<em>{tagName:string, attr:{name:string, value:string, valueAssigned:boolean, quoteChar:string, hasEndQuote:boolean}, position:{tokenType:string, offset:number</em>) - }} A tagInfo object with some context about the current tag hint.</dd>
                     </dl>
                     <p>Figure out if we're in a tag, and if we are return info about it<br />An example token stream for this tag is <span id="open-files-disclosure-arrow"></span> : <br />     className:tag       string:"<span"<br />     className:          string:" "<br />     className:attribute string:"id"<br />     className:          string:"="<br />     className:string    string:""open-files-disclosure-arrow""<br />     className:tag       string:"></span>"</p>
                     <button class="btn btn-small show-code">Show code</button>

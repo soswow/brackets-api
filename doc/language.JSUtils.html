@@ -223,10 +223,10 @@
                             <dd>(<em>!Document</em>) - </dd>
                             <dt>functionName</dt>
                             <dd>(<em>!string</em>) - </dd>
-                            <dt>number,</dt>
-                            <dd>(<em>!Array.&lt;offsetStart:</em>) - offsetEnd: number}>} functions</dd>
-                            <dt>Document,</dt>
-                            <dd>(<em>!Array.&lt;document:</em>) - name: string, lineStart: number, lineEnd: number}>} rangeResults</dd>
+                            <dt>functions</dt>
+                            <dd>(<em>!Array.&lt;{offsetStart: number, offsetEnd: number}&gt;</em>) - </dd>
+                            <dt>rangeResults</dt>
+                            <dd>(<em>!Array.&lt;{document: Document, name: string, lineStart: number, lineEnd: number}&gt;</em>) - </dd>
                     </dl>
                     <p>Computes function offsetEnd, lineStart and lineEnd. Appends a result record to rangeResults.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -265,7 +265,7 @@
                             <dt>text</dt>
                             <dd>(<em>!string</em>) - Document text</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>Object.&lt;string, </em>) - Array.<{offsetStart: number, offsetEnd: number}>}</dd>
+                            <dd>(<em>Object.&lt;string, Array.&lt;{offsetStart: number, offsetEnd: number}&gt;</em>) - </dd>
                     </dl>
                     <p>Return an Array with names and offsets for all functions in the specified text</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -372,7 +372,7 @@
                             <dt>fileInfo</dt>
                             <dd>(<em>FileInfo</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise resolved with a document info object that</dd>
+                            <dd>(<em>$.Promise</em>) - A promise resolved with a document info object that contains a map of all function names from the document and each function's start offset.</dd>
                     </dl>
                     <p>Resolves with a record containing the Document or FileInfo and an Array of all<br />function names with offsets for the specified file. Results may be cached.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -397,7 +397,7 @@
                             <dt>fileInfos</dt>
                             <dd>(<em>Array.&lt;FileInfo&gt;</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise resolved with an array of document info objects that each</dd>
+                            <dd>(<em>$.Promise</em>) - A promise resolved with an array of document info objects that each contain a map of all function names from the document and each function's start offset.</dd>
                     </dl>
                     <p>Get all functions for each FileInfo.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -439,12 +439,12 @@
                     <h4>_getOffsetsForFunction</h4>
                     <!--<strong>Params:</strong>-->
                     <dl>
-                            <dt>Document,</dt>
-                            <dd>(<em>!Array.&lt;doc:</em>) - fileInfo: FileInfo, functions: Array.<offsetStart: number, offsetEnd: number>}>} docEntries</dd>
+                            <dt>docEntries</dt>
+                            <dd>(<em>!Array.&lt;{doc: Document, fileInfo: FileInfo, functions: Array.&lt;offsetStart: number, offsetEnd: number&gt;}&gt;</em>) - </dd>
                             <dt>functionName</dt>
                             <dd>(<em>!string</em>) - </dd>
-                            <dt>Document,</dt>
-                            <dd>(<em>!Array.&lt;document:</em>) - name: string, lineStart: number, lineEnd: number>} rangeResults</dd>
+                            <dt>rangeResults</dt>
+                            <dd>(<em>!Array.&lt;document: Document, name: string, lineStart: number, lineEnd: number&gt;</em>) - </dd>
                             <dt>Returns</dt>
                             <dd>(<em>$.Promise</em>) - A promise resolved with an array of document ranges to populate a MultiRangeInlineEditor.</dd>
                     </dl>
@@ -534,7 +534,7 @@
                             <dt>fileInfo</dt>
                             <dd>(<em>FileInfo</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - A promise resolved with true with true when a function cache is available for the document. Resolves</dd>
+                            <dd>(<em>$.Promise</em>) - A promise resolved with true with true when a function cache is available for the document. Resolves with false when there is no cache or the cache is stale.</dd>
                     </dl>
                     <p>Determines if the document function cache is up to date. </p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -582,7 +582,7 @@
                             <dt>{!String}</dt>
                             <dd>(<em>searchName</em>) - function name to search for</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>Array.&lt;offset:number, </em>) - functionName:string}>}</dd>
+                            <dd>(<em>Array.&lt;{offset:number, functionName:string}&gt;</em>) - Array of objects containing the start offset for each matched function name.</dd>
                     </dl>
                     <p>Finds all instances of the specified searchName in "text".<br />Returns an Array of Objects with start and end properties.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -629,7 +629,7 @@
                             <dt>fileInfos</dt>
                             <dd>(<em>!Array.&lt;FileIndexManager.FileInfo&gt;</em>) - The array of files to search.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - that will be resolved with an Array of objects containing the</dd>
+                            <dd>(<em>$.Promise</em>) - that will be resolved with an Array of objects containing the source document, start line, and end line (0-based, inclusive range) for each matching function list. Does not addRef() the documents returned in the array.</dd>
                     </dl>
                     <p>Return all functions that have the specified name.</p>
                     <button class="btn btn-small show-code">Show code</button>

@@ -183,9 +183,9 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>directory,</dt>
-                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions.</dd>
-                            <dt>string}}</dt>
-                            <dd>(<em>!baseUrl:</em>) - config object with baseUrl property containing absolute path of extension folder</dd>
+                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions. each subdirectory is interpreted as an independent extension</dd>
+                            <dt>config</dt>
+                            <dd>(<em>!{baseUrl: string}</em>) - object with baseUrl property containing absolute path of extension folder</dd>
                             <dt>entryPoint</dt>
                             <dd>(<em>!string</em>) - Module name to load (without .js suffix)</dd>
                             <dt>processExtension</dt>
@@ -254,7 +254,7 @@
                             <dt>name,</dt>
                             <dd>(<em>!string</em>) - used to identify the extension</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>!Object</em>) - A require.js require object used to load the extension, or undefined if </dd>
+                            <dd>(<em>!Object</em>) - A require.js require object used to load the extension, or undefined if there is no require object ith that name</dd>
                     </dl>
                     <p>Returns the require.js require context used to load an extension</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -286,7 +286,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>A</dt>
-                            <dd>(<em>?string</em>) - list containing references to extension source</dd>
+                            <dd>(<em>?string</em>) - list containing references to extension source location. A source location may be either (a) a folder path relative to src/extensions or (b) an absolute path.</dd>
                             <dt>Returns</dt>
                             <dd>(<em>!$.Promise</em>) - A promise object that is resolved when all extensions complete loading.</dd>
                     </dl>
@@ -358,7 +358,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>directory,</dt>
-                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions.</dd>
+                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions. each subdirectory is interpreted as an independent extension</dd>
                             <dt>Returns</dt>
                             <dd>(<em>!$.Promise</em>) - A promise object that is resolved when all extensions complete loading.</dd>
                     </dl>
@@ -378,12 +378,12 @@
                     <dl>
                             <dt>name,</dt>
                             <dd>(<em>!string</em>) - used to identify the extension</dd>
-                            <dt>string}}</dt>
-                            <dd>(<em>!baseUrl:</em>) - config object with baseUrl property containing absolute path of extension</dd>
+                            <dt>config</dt>
+                            <dd>(<em>!{baseUrl: string}</em>) - object with baseUrl property containing absolute path of extension</dd>
                             <dt>entryPoint,</dt>
                             <dd>(<em>!string</em>) - name of the main js file to load</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>!$.Promise</em>) - A promise object that is resolved when the extension is loaded, or rejected</dd>
+                            <dd>(<em>!$.Promise</em>) - A promise object that is resolved when the extension is loaded, or rejected if the extension fails to load or throws an exception immediately when loaded. (Note: if extension contains a JS syntax error, promise is resolved not rejected).</dd>
                     </dl>
                     <p>Loads the extension that lives at baseUrl into its own Require.js context</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -402,7 +402,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>directory,</dt>
-                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions.</dd>
+                            <dd>(<em>!string</em>) - an absolute native path that contains a directory of extensions. each subdirectory is interpreted as an independent extension</dd>
                             <dt>Returns</dt>
                             <dd>(<em>!$.Promise</em>) - A promise object that is resolved when all extensions complete loading.</dd>
                     </dl>
@@ -432,8 +432,8 @@
                     <dl>
                             <dt>name,</dt>
                             <dd>(<em>!string</em>) - used to identify the extension</dd>
-                            <dt>string}}</dt>
-                            <dd>(<em>!baseUrl:</em>) - config object with baseUrl property containing absolute path of extension</dd>
+                            <dt>config</dt>
+                            <dd>(<em>!{baseUrl: string}</em>) - object with baseUrl property containing absolute path of extension</dd>
                             <dt>entryPoint,</dt>
                             <dd>(<em>!string</em>) - name of the main js file to load</dd>
                             <dt>Returns</dt>

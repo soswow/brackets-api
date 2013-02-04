@@ -178,7 +178,7 @@
                     <h4>_commandMap</h4>
                     <dl>
                             <dt>Type</dt>
-                                <dd>!Object.<string, </dd>
+                                <dd>!Object.<string, Array.<{key: string, displayKey: string}>></dd>
                             <dt>Private</dt>
                     </dl>
                     <p>Maps commandID to the list of shortcuts that are bound to it.</p>
@@ -208,7 +208,7 @@
                     <h4>_keyMap</h4>
                     <dl>
                             <dt>Type</dt>
-                                <dd>!Object.<string, </dd>
+                                <dd>!Object.<string, {commandID: string, key: string, displayKey: string}></dd>
                             <dt>Private</dt>
                     </dl>
                     <p>Maps normalized shortcut descriptor to key binding info.</p>
@@ -232,12 +232,12 @@
                     <dl>
                             <dt>commandID</dt>
                             <dd>(<em>string</em>) - </dd>
-                            <dt>string,</dt>
-                            <dd>(<em>string, key:</em>) - displayKey: string}}} keyBinding - a single shortcut.</dd>
+                            <dt>keyBinding</dt>
+                            <dd>(<em>string, {{key: string, displayKey: string}}</em>) - - a single shortcut.</dd>
                             <dt>platform</dt>
                             <dd>(<em>?string</em>) - - undefined indicates all platforms</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>?key:</em>) - string, displayKey:String}} Returns a record for valid key bindings.</dd>
+                            <dd>(<em>?{key: string, displayKey:String}</em>) - Returns a record for valid key bindings. Returns null when key binding platform does not match, binding does not normalize, or is already assigned.</dd>
                     </dl>
                     <p></p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -630,12 +630,12 @@
                     <dl>
                             <dt>commandID</dt>
                             <dd>(<em>!string</em>) - </dd>
-                            <dt>string,</dt>
-                            <dd>(<em>?(key:</em>) - displayKey: string} | Array.<{key: string, displayKey: string, platform: string}>)} keyBindings</dd>
+                            <dt>|</dt>
+                            <dd>(<em>?({key: string, displayKey: string</em>) - Array.<{key: string, displayKey: string, platform: string}>)} keyBindings a single key binding or an array of keybindings. Example: "Shift-Cmd-F". Mac and Win key equivalents are automatically mapped to each other. Use displayKey property to display a different string (e.g. "CMD+" instead of "CMD=").</dd>
                             <dt>platform</dt>
-                            <dd>(<em>?string</em>) - - the target OS of the keyBindings either</dd>
+                            <dd>(<em>?string</em>) - - the target OS of the keyBindings either "mac", "win" or "linux". If undefined, all platforms not explicitly defined will use the key binding.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>key:</em>) - string, displayKey:String}|Array.<{key: string, displayKey:String}>}</dd>
+                            <dd>(<em>{key: string, displayKey:String}, Array.&lt;{key: string, displayKey:String}&gt;</em>) - Returns record(s) for valid key binding(s)</dd>
                     </dl>
                     <p>Add one or more key bindings to a particular Command.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -711,7 +711,7 @@
                             <dt>command</dt>
                             <dd>(<em>!string</em>) - - A command ID</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>!Array.&lt;key:</em>) - string, displayKey: string}}>} An array of associated key bindings.</dd>
+                            <dd>(<em>!Array.&lt;{{key: string, displayKey: string}}&gt;</em>) - An array of associated key bindings.</dd>
                     </dl>
                     <p>Retrieve key bindings currently associated with a command</p>
                     <button class="btn btn-small show-code">Show code</button>

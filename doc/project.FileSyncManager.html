@@ -245,7 +245,7 @@
                             <dt>docs</dt>
                             <dd>(<em>!Array.&lt;Document&gt;</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - Resolved when all scanning done, or rejected immediately if there's any</dd>
+                            <dd>(<em>$.Promise</em>) - Resolved when all scanning done, or rejected immediately if there's any error while reading file timestamps. Errors are logged but no UI is shown.</dd>
                     </dl>
                     <p>Scans all the given Documents for changes on disk, and sorts them into four buckets,<br />populating the corresponding arrays:<br /> toReload        - changed on disk; unchanged within Brackets<br /> toClose         - deleted on disk; unchanged within Brackets<br /> editConflicts   - changed on disk; also dirty in Brackets<br /> deleteConflicts - deleted on disk; also dirty in Brackets</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -305,7 +305,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - Resolved/rejected after all documents have been prompted and (if</dd>
+                            <dd>(<em>$.Promise</em>) - Resolved/rejected after all documents have been prompted and (if applicable) reloaded (and any resulting error UI has been dismissed). Rejected if any one reload failed.</dd>
                     </dl>
                     <p>Walks through all the documents in "editConflicts" &amp; "deleteConflicts" and prompts the user<br />about each one. Processing is sequential: if the user chooses to reload a document, the next<br />prompt is not shown until after the reload has completed.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -392,7 +392,7 @@
                     <!--<strong>Params:</strong>-->
                     <dl>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - Resolved/rejected after all reloads done; will be rejected if any one</dd>
+                            <dd>(<em>$.Promise</em>) - Resolved/rejected after all reloads done; will be rejected if any one file's reload failed. Errors are logged (by reloadDoc()) but no UI is shown.</dd>
                     </dl>
                     <p>Reloads all the documents in "toReload" silently (no prompts). The operations are all run<br />in parallel.</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -412,7 +412,7 @@
                             <dt>doc</dt>
                             <dd>(<em>!Document</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - Resolved after editor has been refreshed; rejected if unable to load the</dd>
+                            <dd>(<em>$.Promise</em>) - Resolved after editor has been refreshed; rejected if unable to load the file's new content. Errors are logged but no UI is shown.</dd>
                     </dl>
                     <p>Reloads the Document's contents from disk, discarding any unsaved changes in the editor.</p>
                     <button class="btn btn-small show-code">Show code</button>

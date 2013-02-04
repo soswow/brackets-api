@@ -235,10 +235,10 @@
                     <dl>
                             <dt>editor</dt>
                             <dd>(<em>!Editor</em>) - </dd>
-                            <dt>ch:Number}}</dt>
-                            <dd>(<em>!line:Number, </em>) - pos</dd>
+                            <dt>pos</dt>
+                            <dd>(<em>!{line:Number, ch:Number}</em>) - </dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with an InlineWidget</dd>
+                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with an InlineWidget or null if we're not going to provide anything.</dd>
                     </dl>
                     <p>This function is registered with EditManager as an inline editor provider. It creates a CSSInlineEditor<br />when cursor is on an HTML tag name, class attribute, or id attribute, find associated<br />CSS rules and show (one/all of them) in an inline editor.</p>
                     <button class="btn btn-small show-code">Show code</button>

@@ -222,11 +222,11 @@
                             <dt>dlgClass</dt>
                             <dd>(<em>string</em>) - The class of the dialog node in the HTML.</dd>
                             <dt>title</dt>
-                            <dd>(<em>string=</em>) - The title of the error dialog. Can contain HTML markup. If unspecified, title in</dd>
+                            <dd>(<em>string=</em>) - The title of the error dialog. Can contain HTML markup. If unspecified, title in the HTML template is used unchanged.</dd>
                             <dt>message</dt>
-                            <dd>(<em>string=</em>) - The message to display in the error dialog. Can contain HTML markup. If</dd>
+                            <dd>(<em>string=</em>) - The message to display in the error dialog. Can contain HTML markup. If unspecified, body in the HTML template is used unchanged.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with the ID of the clicked button when the dialog</dd>
+                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with the ID of the clicked button when the dialog is dismissed. Never rejected.</dd>
                     </dl>
                     <p>General purpose modal dialog. Assumes that:<br />-- the root tag of the dialog is marked with a unique class name (passed as dlgClass), as well as the<br />   classes "template modal hide".<br />-- the HTML for the dialog contains elements with "title" and "message" classes, as well as a number <br />   of elements with "dialog-button" class, each of which has a "data-button-id".</p>
                     <button class="btn btn-small show-code">Show code</button>
@@ -256,11 +256,11 @@
                             <dt>template</dt>
                             <dd>(<em>string</em>) - A string template or jQuery object to use as the dialog HTML.</dd>
                             <dt>title</dt>
-                            <dd>(<em>string=</em>) - The title of the error dialog. Can contain HTML markup. If unspecified, title in</dd>
+                            <dd>(<em>string=</em>) - The title of the error dialog. Can contain HTML markup. If unspecified, title in the HTML template is used unchanged.</dd>
                             <dt>message</dt>
-                            <dd>(<em>string=</em>) - The message to display in the error dialog. Can contain HTML markup. If</dd>
+                            <dd>(<em>string=</em>) - The message to display in the error dialog. Can contain HTML markup. If unspecified, body in the HTML template is used unchanged.</dd>
                             <dt>Returns</dt>
-                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with the ID of the clicked button when the dialog</dd>
+                            <dd>(<em>$.Promise</em>) - a promise that will be resolved with the ID of the clicked button when the dialog is dismissed. Never rejected.</dd>
                     </dl>
                     <p>Like showModalDialog(), but takes a template as a parameter rather than assuming the template is embedded<br />in the current DOM. The template can either be a string or a jQuery object representing a DOM node that is<br /><em>not</em> in the current DOM.</p>
                     <button class="btn btn-small show-code">Show code</button>
